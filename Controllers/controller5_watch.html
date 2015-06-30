@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>controller1</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
+
+<script>
+	function myctrl($scope)
+	{
+		$scope.name = "";
+		
+		$scope.$watch("name",function(newVal,oldVal)
+		{
+			if($scope.name.length>3)
+			{
+				$scope.greeting = "greetings " + $scope.name;
+			}
+		});
+
+	}
+</script>
+	</head>
+
+	<body ng-app>
+		
+		<div ng-controller="myctrl">
+			<input type="text" ng-model="name"/>
+			<p>{{greeting}}</p>
+		</div>
+
+	</body>
+</html>

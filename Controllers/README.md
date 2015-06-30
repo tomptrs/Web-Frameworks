@@ -30,8 +30,14 @@ We gaan bijvoorbeeld het 'value' model met 1 incrementeren door gebruik te maken
 van de controller.
 In voorbeeld3 wordt de ng-init directive gebruikt wanneer de pagina geladen wordt. Deze roept de increment functie , aangemaakt in de controller, aan.
 
-# Encapsulate een model  door middel van een controller's functie
+# 4 Encapsulate een model  door middel van een controller's functie
 
 (voorbeeld 4)In plaats van rechtstreeks het model aan te spreken (via scope service), gaan we het model encapsuleren binnen een functie van de controller.
+
+## 5 Reageren op scope veranderingen
+
+Als het model verandert wil je een actie triggeren. Hiervoor maak je gebruik van de watch functie in je controller.
+Het eerste argument van de $watch functie is een angular expressie. Het tweede argument wordt opgeroepen waneer de expressie evaluatie een andere waarde terugkrijgt.
+
 
 Author: Tom Peeters
