@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>service1</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
+
+<script>
+
+var app = angular.module("MyApp",[]);
+
+app.factory("UserService",function()
+{
+	var users = ["Tom","Hannes", "Arno","Mieke"];
+	
+return {
+    all: function() {
+      return users;
+    },
+    first: function() {
+      return users[0];
+    }
+  };
+});	
+
+app.controller("MyCtrl1",function($scope,UserService)
+{
+	$scope.users = UserService.all();
+});
+
+app.controller("MyCtrl2",function($scope,UserService)
+{
+	$scope.first = UserService.first();
+});
+
+</script>
+	</head>
+
+	<body ng-app="MyApp">
+		
+		<div ng-controller="MyCtrl1">
+			<p>{{users}}</p>
+		</div>
+		
+		<div ng-controller="MyCtrl2">
+			<p>{{first}}</p>
+		</div>
+
+
+	</body>
+</html>
