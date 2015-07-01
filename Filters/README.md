@@ -17,3 +17,10 @@ onmiddellijk worden verwerkt in de filter functie.
 De suffix ! wordt doorgegeven als een optie aan de filter functie en wordt toegevoegd aan de output
 
 ## Filters met arrays
+
+De filter gaat door alle namen en maakt een nieuwe array aan zonder één bepaald element.
+
+## Chaining filters
+
+Filters kunnen gecombineerd worden door middel van de "unix" pipe syntax.
+

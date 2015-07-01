@@ -34,8 +34,8 @@
 
 	<body ng-app = "MyApp">
 		
-		<ul ng-init="names = ['Tom','Arno','Hannes','Mieke']">
-			<li ng-repeat="name in names | exclude: 'Mieke' | orderBy:'-name' ">
+		<ul ng-init="names = ['Tom','Hannes','Arno','Mieke']">
+			<li ng-repeat="name in names | exclude: 'Mieke'">
 				{{name}}
 			</li>
 		</ul>
