@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="Scripts/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/workout.js"></script>
+</head>
+<body ng-app="workout">
+    <div >
+        <div >
+            <div>
+                <h1>7 Minute Workout</h1>
+            </div>
+        </div>
+    </div>
+    <div>
+       
+
+        <div ng-controller="WorkOutCtrl">
+            <pre>Huidige Oefening: {{huidigeOefening.details | json}}</pre>
+            <pre>Time Left: {{huidigOefeningDuration}}</pre>
+        </div>
+      
+    </div>
+</body>
+</html>
