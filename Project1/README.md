@@ -81,4 +81,26 @@ toegewezen aan de interpolaties of directives.
 Dus {{ aantalPogingen }} zit tussen de interpolatie en is zo gebonden aan de $scope.
 Directives zijn speciale constructies (attributen) die de standaard HTML uitbreiden. Ze geven extra gedrag aan deze tags.
 (Het is zelfs mogelijk om eigen directives te maken). In ons voorbeeld:
-* ng-model: zorgt voor
+* ng-model: zorgt voor de binding tussen de $scope en de attribuut waarden van ng-model. Bij veranderingen in het input veld
+<input type="number" ng-model="guess" /> zal de guess variabele in de controller automatisch veranderen, maar ook als
+de variabele in de controller zou veranderen zal de UI automatisch updaten.
+
+* ng-click: de click zal een functie in de controller opstarten.
+
+* ng-show: de toont of verbergt elementen gebaseerd op de expressie (true of false).
+
+* ng-controller: linkt de controller aan de view.
+
+We kunnen nog wat extra's doen met bindings en gebruik maken van expressies. De ng-show directive wordt geevalueerd naar
+true of fase en dus gebruiken we hier expressies: afwijking > 0
+
+Gebruik de chrome extense batarang voor AngularJS debugging functionaliteit.
+
+##scope
+
+In Angular elke javascript object of primitive kan een model zijn. Om een binding te hebben moeten deze parameters aan 
+een scope object toegewezen worden.
+
+###Definitie
+De scope is een javascript object dat de model properties en functies aan de HTML view bindt.(De scope is geen model, maar
+heeft een referentie naar het model).
