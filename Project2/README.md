@@ -211,3 +211,43 @@ We kunnen de view aanmaken om te testen of we werkelijk de eerste oefening te zi
     </div>
 </body>
 </html>
+
+## Interval Service
+
+Nu willen we dat na de gekregen tijdsduur van de oefening we automatisch de volgend oefening laten zien.
+
+Bij de aanmaak van een oefening:
+
+  workout.oefeningen.push(
+            {
+                details: new Oefening(
+                    {
+                        naam: "oef 1 springen",
+                        titel: "oef 1: springen",
+                        beschrijving: "spring constant"
+                    }),
+                duration: 10
+            }
+
+geven we een property "duration" mee die bepaald hoe lang de oefening duurt. Angular heeft een $interval service
+die een wrapper is over de window.setInterval methode. Het hoofddoel van deze service is het continu oproepen van een 
+bepaalde functie met een specifiek tijdsinterval:
+
+  $interval(function () {
+           
+            $scope.huidigOefeningDuration++;
+        },
+        1000,
+        $scope.huidigeOefening.duration);
+
+
+Hier roepen we de $interval op en geven als eerste argument ene callback functie mee die na een tijdsinterval ( dit is
+de tweede parameter) opgeroepen wordt en dit voor een aantal maal (dit is de derde parameter die meegegeven wordt).
+
+Om de $interval service te gebruiken moeten we deze injecteren in de controller:
+
+angular.module("workout").controller("WorkOutCtrl",['$scope', '$interval', function ($scope,$interval)
+
+test je programma opnieuw uit (zorg ervoor dat je de $scope.huidigeOefningDuration gelinkt hebt in de UI).
+
+## $watch
