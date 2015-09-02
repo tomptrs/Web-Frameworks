@@ -181,15 +181,6 @@ We kunnen de view aanmaken om te testen of we werkelijk de eerste oefening te zi
 
 ### de view - part 1.
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-    <script type="text/javascript" src="Scripts/angular.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/workout.js"></script>
-</head>
 <body ng-app="app">
     <div >
         <div >
@@ -197,6 +188,17 @@ We kunnen de view aanmaken om te testen of we werkelijk de eerste oefening te zi
                 <h1>7 Minute Workout</h1>
             </div>
         </div>
+    </div>
+    <div>
+       
+
+        <div ng-controller="WorkOutCtrl">
+            <pre>Huidige Oefening: {{huidigeOefening.details | json}}</pre>
+            <pre>Time Left: {{huidigOefeningDuration}}</pre>
+        </div>
+      
+    </div>
+</body>
     </div>
     <div>
        
