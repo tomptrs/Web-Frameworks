@@ -251,3 +251,29 @@ angular.module("workout").controller("WorkOutCtrl",['$scope', '$interval', funct
 test je programma opnieuw uit (zorg ervoor dat je de $scope.huidigeOefningDuration gelinkt hebt in de UI).
 
 ## $watch
+
+Om de overgang naar de volgende oefening te maken moeten we de waarde van huidigeOefeningDuration volgen. Wanneer deze
+waarde de limiet bereikt (gemeten in de $interval service) moeten we overgaan naar de volgende oefening.
+We weten dat Angular de view update wanneer het model wordt aangepast dankzij de databinding capaciteit, en meer Angular 
+heeft een watch functionaliteit die gebruikt kan worden om veranderingen op te volgen in de controller.
+Deze watch functie laat ons toe om een "listener" te registreren die opgeroepen wordt wanneer de $scope verandert ( of 
+een bepaalde waarde krijgt).
+
+  $scope.$watch("huidigOefeningDuration", function (waarde)
+        {
+            if (waarde == $scope.huidigeOefening.duration)
+            {
+                startVolgendeOefening();
+            }
+        })
+
+   var startVolgendeOefening = function ()
+        {
+            if ($scope.huidigeOefening == rustOefening)
+                startOefeningen(workoutPlan.oefeningen.shift());
+            else                
+                startOefeningen(rustOefening);
+        }
+
+Test deze code uit.
+
