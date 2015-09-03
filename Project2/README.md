@@ -277,3 +277,35 @@ een bepaalde waarde krijgt).
 
 Test deze code uit.
 
+# Dependecy Injection
+
+Modules dienen om code te organizeren en zijn containers voor  bijvoorbeeld controllers, services, directives, filters.
+Angular voorziet in een mechanisme om dependencies te beheren door gebruik te maken van Dependency Injection.
+
+Het idee achter dependency injection is dat een object zijn eigen dependencies niet creëert of beheert. De dependencies
+worden van buitenaf voorzien.
+
+Een voorbeeld ter verduidelijking:
+
+function Component()
+{
+  var logger = new Logger();
+}
+
+De dependency is hardgecodeerd in de klasse Component. Nu laten we de dependeny van buitenaf komen:
+
+function Component(l)
+{
+  var logger = l;
+}
+
+De impact is groot, want door de dependency van buitenaf te voorzien hebben we de mogelijkheid om het logging gedrag
+te beinvloeden zonder extra codering:
+
+var v1 = new Component(new DBlogger);
+var v2 = new Component( new FileLogger);
+
+We hebben 2 variabelen aangemaakt met een verschillende log capaciteit zonder de Component klasse implementatie te 
+veranderen.
+
+<<TODO>> Hoe in Angular
