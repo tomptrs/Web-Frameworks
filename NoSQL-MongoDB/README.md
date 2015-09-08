@@ -256,12 +256,116 @@ De logica dat je kan gebruiken:
 - $not: db.inventory.find( { price: { $not: { $gt: 1.99 } } } ) : deze query selecteert alle documenten waarbij de prijs kleiner of gelijk is aan 1.99
 
 
-# MongoDB commando's
+## MongoDB commando's
 
 Om een database aan te maken gebruik je het use commando, bijvoorbeeld “use news”
 Om te kijken welke databanken beschikbaar zijn : show dbs
 De goede lezer merkt dat onze news database niet beschikbaar is, dit komt omdat deze nog geen collecties bevat.
 Om een collectie aan te maken: db.createCollection(“EenCollection”)
+
+
+
+# Basis terminologie
+
+Documenten en collecties zijn de basis data structuren van een document database. Er zit wat analogie in met rijen en kolommen van relationele databases.
+
+Volgende termen zijn belangrijk in ons document model:
+
+- Document
+- Collection
+- Embedded Document
+- Schemaless
+- polymorphic scheme
+
+## Document
+
+Een document is een set van key-value paren. Een key is een unieke identifier, gebruikt om een waarde op te zoeken. 
+
+Key zijn normaal altijd strings, terwijl values verschillende data types kunnen zijn: string, number, array, object.
+
+Arrays zijn handig als je verschillende instanties van een value wil hebben. (In tegenstelling tot relationele databanken, heb je hier geen 2 tabellen, en dus geen join nodig).
+
+{
+  "naam":"peeters",
+  "CursusIds": [123,456,589]	
+}
+
+CursusIds is een lijst van cursus Ids. Omdat CursusIds slechts enkel nummers zijn is een array hier aangewezen, maar indien je meer info over een cursus wil bewaren kan je ook met
+embedded documenten werken.
+
+Bijvoorbeeld:
+
+{
+ "naam":"peeters",
+ "Cursus":[{
+  "id":123,
+  "naam":"databases" 
+ },
+{
+  "id":456,
+  "naam":"web frameworks" 
+ },
+ ]
+}
+
+
+## Collections
+
+Een collection is een groep van documenten. De documenten binnen een collectie zijn meestal gerelateerd aan elkaar.
+
+## Embedded Documents
+
+Een voordeel van document databases is de mogelijkheid om  gerelateerde data op een meer flexibelere manier te bewaren dan bij relationele databases.
+
+Indien je een werknemer en een project wil bewaren, zal je in een relationele databank waarschijnlijk 2 tabellen gebruiken, terwijl men in een NoSQL database
+met embedded documents kan werken. Op die manier kan je "joining" vermijden. Joining verwijst naar een proces waarbij data van de ene tabel gelinkt is met een vreemde sleutel
+naar een andere tabel.
+
+Een join van 2 grote tabellen kan tijdsintensief zijn, terwijl het gebruik van embedded documenten bij elkaar horende data in 1 document kan bewaard worden. Dus embedded
+documents zijn documenten binnen in een document.
+
+## Schemaless
+
+Voor document databases heb je geen analyst nodig die bijvoorbeeld eerst een ER-schema opstelt om de structuur op te zetten. Een dergelijke structuur noemen we ook een schema.
+In een relationeel model duidt je dan aan wat de tabellen, kolommen, primaire en vreemde sleutels zijn.
+
+Document databases hebben dit niet nodig, en vandaar zeggen we dat ze schemaless zijn.
+
+Schemaless betekent :
+ - meer flexibiliteit
+ - meer verantwoordelijkheid
+
+### Meer flexibiliteit
+
+Ontwikkelaars kunnen op elk moment nieuwe key-value paren toevoegen, zelfs na de collectie is aangemaakt. Eens de collectie aangemaakt kan je er variërende documenten naar toe sturen.
+
+### Meer verantwoordelijkheid
+
+er bestaan dus geen regels op de database structuur, en dus moet een programmeur een verantwoordelijke rol opnemen als hij iets met de data doet.
+
+## Polymorphic Schema
+
+Een document database is polymorfisch omdat de documenten verschillende vormen kan aannemen.
+
+Bijvoorbeeld:
+{
+ {
+  "a":1,
+  "b":2,
+  "c":3,
+ },
+{
+  "b":1,
+  "d":4,
+  "g":5,
+ },
+{
+  "a":8,
+  "d":2,
+  "f":3,
+  "g":3,
+ }
+}
 
 
 
