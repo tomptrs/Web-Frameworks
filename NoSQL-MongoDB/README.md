@@ -226,10 +226,42 @@ De find methode wordt gebruikt om documenten van een collectie te selecteren.
 
 db.employees.find();
 
+db.employees.find({"naam":"peeters"})
+
+Deze 2 find methodes geven alle keys en values terug in de documenten.
+
+Je kan ook een extra parameter meegeven om te specifiëren welke keys je wil laten zien, samen met een 1 om aan te duiden dat deze moet getoond worden.
+
+db.employees.find({"naam":"peeters"}, {"voornaam":1});
+
+
+db.employees.find({"naam":"peeters"}, {"voornaam":1,"id":1});
+
+Je merkt dat MongoDB by default ook een unique identifier weergeeft, zelfs als deze niet gevraagd is.
+
+## Complexe queries door conditionele logica
+
+Bijvoorbeeld: 
+db.employees.find({"id": {"gte":10} })
+
+De logica dat je kan gebruiken:
+
+- $lt : kleiner dan
+- $let: kleiner of gelijk aan
+- $gt : groter dan
+- $gte: groter of gelijk aan
+- $in : selecteert documenten waar de waarde van een veld gelijk is aan die gespecifieerd in de array. Bijvoorbeeld: db.employees.find({"id":{$in : [10,11]}})
+- $or : voorbeeld: db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } ) : deze query selecteert alle documenten in de inventory collection waarbij de
+	quantity kleiner is dan 20 of de prijs gelijk aan 10
+- $not: db.inventory.find( { price: { $not: { $gt: 1.99 } } } ) : deze query selecteert alle documenten waarbij de prijs kleiner of gelijk is aan 1.99
+
+
 # MongoDB commando's
 
 Om een database aan te maken gebruik je het use commando, bijvoorbeeld “use news”
 Om te kijken welke databanken beschikbaar zijn : show dbs
 De goede lezer merkt dat onze news database niet beschikbaar is, dit komt omdat deze nog geen collecties bevat.
 Om een collectie aan te maken: db.createCollection(“EenCollection”)
+
+
 
