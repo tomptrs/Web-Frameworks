@@ -367,5 +367,158 @@ Bijvoorbeeld:
  }
 }
 
+# Data modelleren
+
+Als je voor een document database een design moet maken, vraag je je eerst af welke queries te er op wil loslaten. Terwijl bij relationele databases je gaat afvragen welke entiteiten en
+de relatie ten opzichte van elkaar allemaal nodig zijn.
+
+Nadat je bij je relationeel model de entiteiten hebt bepaald, ga je aan normalizatie (en eventueel denormalizatie) doen.
+
+Normalizeren is het organizeren van je data in tabellen om potentiële data anomalieën tegen te gaan (inconsistente data). Bij normalizatie vermindert de redundante (overtollige) data
+in de database. Om te normalizeren gebruiken we enkele "normalizatie" regels (1e, 2e, 3e,..).
+
+Wanneer we bij document databases meerdere collecties gebruiken zeggen we dat deze genormaliseerd is. Genormaliseerde documenten betekent dat we een referentie leggen naar andere documenten.
+
+Bijvoorbeeld: Server en ServerLog Data:
+
+Log Data: {
+  {
+    "ID": 123,
+    "Event Data": "bla bla",
+    "ServerId": 123
+  }
+  {
+    "ID": 456,
+    "Event Data": "bla bla",
+    "ServerId": 222
+  }
+} 
+
+Server Data: {
+  {
+    "Id": 123,
+    "info": "test"
+  },
+  {
+    "Id": 456,
+    "info": "test"
+  }
+
+}
+
+Normalizatie help dus  om data anomalieën te vermijden, maar kan performantie problemen veroorzaken! Als je data in meerdere tabellen moet opzoeken (joining). Met andere woorden het design 
+van een database in altijd een trade-off tussen een hoge genormaliseerde database zonder redundante data en een gedenormaliseerde database. Dus denormalizatie doet een undo van de normalizatie regels.
+
+## Waarom aan denormalizatie doen?
+
+Denormalizatie veroorzaakt data anomalieën, heeft meer geheugenruimte nodig (dubbele data bewaren), maar betekent een veel betere performantie.
+
+# Document Database Design
+
+Document database designers bewaren gerelateerde data in hetzelfde document. (Er zal dikwijls een trade-off gemaakt moeten worden tussen performantie en anomalieën.) Document database designers
+trachten steeds data anomalieën te vermijden, maar zijn bereid om verantwoordelijkheid te tonen ten opzichte van scalability en flexibility.
+Bijvoorbeeld: indien er redundante kopies van klantadressen in de database worden bewaard, kan de programmeur een update methode maken die alle kopies van adressen update. Op die manier kunnen
+anomalieën vermeden worden, maar betekenen dus een grotere verantwoordelijkheid voor development.
+
+## Modelleer 1-N relatie
+
+Er zijn 3 gedachtegangen om dit te verwezenlijken.
+
+In mongoDB kan je een een array (van subdocumenten) embedden in een parent document. Maar als je een schema designed moet je aan het volgende denken:
+-	Wat is de kardinaliteit van de relatie? Maar veel genuanceerder: is het een 1 op weinig, of 1 op veel .
+
+### Een 1 op weinig relatie
+
+Dit kan bijvoorbeeld de adressen van een persoon zijn. Een juiste use case om dit in het document persoon te embedden:
+> db.person.findOne()
+{
+  name: 'Kate Monster',
+  ssn: '123-456-7890',
+  addresses : [
+     { street: '123 Sesame St', city: 'Anytown', cc: 'USA' },
+     { street: '123 Avenue Q', city: 'New York', cc: 'USA' }
+  ]
+}
+
+De voordelen hiervan is dat je geen aparte query moet maken om de details (adresssen) te kennen. Het nadeel is dat je de adressen niet als standalone kan raadplegen.
+Dit nadeel speelt parten bij bijvoorbeeld: elke persoon heeft een aantal taken toegewezen gekregen. Embedding de taken binnen een persoon, zal de query ‘toon alle taken voor morgen’ veel moeilijker maken
+
+### Een op veel relatie
+Bijvoorbeeld : elk product bestaat uit onderdelen (niet meer dan enkele duizenden). Dit is een juiste use case voor “referencing”. De Object Ids van de onderdelen stop je in een array bij het product document.
+ En dus heeft elk onderdeel zijn apart document:
+
+> db.parts.findOne()
+{
+    _id : ObjectID('AAAA'),
+    partno : '123-aff-456',
+    name : '#4 grommet',
+    qty: 94,
+    cost: 0.94,
+    price: 3.99
+}
+
+Elk product heeft ook zijn eigen document die een array bevat van objectIds referenties
+> db.products.findOne()
+{
+    name : 'left-handed smoke shifter',
+    manufacturer : 'Acme Corp',
+    catalog_number: 1234,
+    parts : [     // array of references to Part documents
+        ObjectID('AAAA'),    // reference to the #4 grommet above
+        ObjectID('F17C'),    // reference to a different Part
+        ObjectID('D2AA'),
+        // etc
+    ]
+
+Om alle onderdelen van een product eruit te halen doe je:
+// Fetch the Product document identified by this catalog number
+> product = db.products.findOne({catalog_number: 1234});
+   // Fetch all the Parts that are linked to this Product
+> product_parts = db.parts.find({_id: { $in : product.parts } } ).toArray() ;
+
+Het voordeel in dit design is dat elk onderdeel een stand-alone document is, dus makkelijk in te zoeken en up te daten. 
+Een trade off is dat je een tweede query nodig hebt om de onderdelen van een bepaald product eruit te halen.
+
+### Veel-op-veel relatie
+
+Veel op veel relaties gebruiken 2 collecties. Een voor elke entiteit, en elke collectie onderhoudt zijn lijst van bijvoorbeeld studenten en cursussen
+
+Courses: {
+  {
+    "CourseId": "132",
+    "title": "databases",
+    "Enrolled Students": [ 1, 2, 3, 4, 5 ]
+
+  },
+
+  {
+    "CourseId": "456",
+    "title": "web technology",
+    "Enrolled Students": [ 1, 3, 4, 5, 6 ]
+
+  },
+  {
+    "CourseId": "789",
+    "title": "Web frameworks",
+    "Enrolled Students": [ 1, 2, 3, 4, 5 ]
+
+  }
+} Students: {
+  {
+    "StudentId": 1,
+    "name": "peeters"
+    "Courses": [ 132, 456, 789 ]
+  },
+
+   {
+    "StudentId": 2,
+    "name": "vandeperre"
+    "Courses": [132,789 ]
+  },
+
+}
+
+Hier beperken we duplicate data door te refereren naar identifiers. Maar we moeten er wel voor zorgen dat beide entitities steeds correct geupdate worden.
+
 
 
