@@ -176,30 +176,4 @@ Test je eerste SinglePage app uit!
 
 
 
-# NodeJS Routing
-
-
-Routing is het vastleggen van eindpunten (URI's) en de verwerking van client
-requests.
-
-Een route is een combinatie van een URI, HTTP request method (GET, POST, ...) en 
-één of meerdere handlers voor dit eindpunt.
-
-## Structuur
-
-app.METHOD(path,[callback],callback)
-
-app is een instantie van express, method is een HTTP request method, path is
-een pad op de server en callback is een functie die wordt uitgevoerd wanneer
-de route overeenkomt.
-
-Bijvoorbeeld:
-
-var express = require('express');
-var app = express();
-
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-  res.send('hello world');
-});
 
