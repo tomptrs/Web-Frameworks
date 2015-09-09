@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <script type="text/javascript" src="Scripts/angular.min.js"></script>
+    <script type="text/javascript" src="Scripts/angular-route.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+</head>
+<body ng-app="app">
+
+    <div>
+    <ul>
+        <li><a href="#"> Home</a></li>
+        <li><a href="#about"> About</a></li>
+        <li><a href="#contact"> Contact</a></li>
+    </ul>
+     </div>   
+
+
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <div id="main">
+
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
+        {{message}}
+
+    </div>
+</body>
+</html>
