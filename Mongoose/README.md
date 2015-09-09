@@ -74,7 +74,7 @@ De types die je kan gebruiken zijn de volgende:
 - ObjectId
 - Array
 
-Tenslotten maak je het model aan door mongoose.model.
+Tenslotte maak je het model aan door mongoose.model.
 
 ## Gebruik maken van je model
 
@@ -110,3 +110,13 @@ console.log("user saved");
 We hebben ook een created_at attribuut gedefinieerd om te weten wanneer de record bewaard geweest is. We kunnen 
 hiervoor bijvoorbeeld de pre methode van het schema gebruiken om operaties af te handelen vooraleer het object bewaard 
 wordt.
+
+userSchema.pre("save", function (next) {
+
+	var currentDate = new Date();
+	this.created_at = currentDate;
+	console.log("current date" + currentDate);
+	next();
+});
+
+
