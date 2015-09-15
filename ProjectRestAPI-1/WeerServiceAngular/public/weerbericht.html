@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>weerbericht</title>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+
+<script>
+	
+	var app = angular.module("app",[]);
+	
+	app.controller("ctrl", function ($scope,$http) {
+		
+		//$http.get("http://localhost:12300/Service1.svc/voorspelling/2")
+		$http.get("http://localhost:2222/api/vandaag")
+			.success(function(posts)
+			{
+				
+				$scope.posts = posts;
+			});	
+		});
+		
+</script>
+
+<body ng-app="app">
+	
+	<div ng-controller="ctrl">
+	{{posts}}
+	<ul>
+	<!--	<li ng-repeat="post in posts">{{post.Beschrijving}} : {{post.Temperatuur}}</li>-->
+	<li>test</li>
+	</ul>
+	</div>
+
+</body>
+</html>
