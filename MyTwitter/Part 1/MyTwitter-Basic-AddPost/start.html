@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>start</title>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	 	<script src="Controller/JavascriptController.js"></script>
+	</head>
+
+	<body ng-app="app">
+		
+
+		<div class="container" ng-controller="twitterController">
+			<h1>Recent Posts</h1>
+			
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="post in posts">
+					
+					<strong>{{post.username}}</strong>
+					<span>{{post.body}}</span>
+				</li>
+				
+			</ul>
+			
+			<button ng-click="addPost()" class="btn btn-default">Nieuwe Entry</button>
+			
+		</div>
+
+	</body>
+</html>
