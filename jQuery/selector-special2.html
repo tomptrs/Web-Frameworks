@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>selector</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<style>
+	
+	.even
+	{
+		background: red;
+	}
+</style>
+<script>
+	
+	$(function(){
+		
+		$("button").click(function(){
+					$("tr:even").toggleClass('even');
+
+		});
+	});
+</script>
+	</head>
+
+	<body>
+		<button>Button</button>
+		<table>
+			<tr><td>een</td><td>twee</td></tr>
+			<tr><td>drie</td><td>vier</td></tr>
+			<tr><td>vijf</td><td>zes</td></tr>
+			<tr><td>zeven</td><td>acht</td></tr>
+		</table>
+
+	</body>
+</html>

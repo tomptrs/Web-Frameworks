@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>2</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+	<script>
+		$(function() {
+			$("#test").click(function() {
+				$("#foo2").toggle("slow");
+				
+			});
+
+		});
+
+		function toggle_visibility(id) {
+			var e = document.getElementById(id);
+			if (e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+
+		</script>
+	</head>
+
+	<body>
+		
+		<a href="#" onclick="toggle_visibility('foo');">Click here to toggle visibility of #foo</a>
+
+
+<div id="foo">
+	
+	Dit is een div
+</div>
+
+
+	<a href="#" id="test" >JQuery</a>
+
+
+<div id="foo2">
+	
+	Dit is een div2
+</div>
+
+	</body>
+</html>
