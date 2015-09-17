@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>fade</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+	
+	
+</style>
+<script>
+	
+	$(function(){
+		
+		$("#event").click(function(){
+					
+			
+			$("#recipe").fadeOut(1000,mijnCallback);
+
+		});
+	});
+	
+	function mijnCallback()
+	{
+		alert("callback functie");
+	}
+	
+</script>
+	</head>
+
+	<body>
+		<div id="event">
+			KLIK HIER
+		</div>
+		
+		<div id="recipe">
+			Dit is een div
+		</div>
+
+	</body>
+</html>
