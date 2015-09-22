@@ -51,7 +51,7 @@ app.controller("GuessTheNumberCtrl", function ($scope)
 Je merkt op dat de model data vervat zitten in de controller. Het $scope object wordt meegegeven met de controller 
 als parameter en alle functies en parameters worden aan dit $scope object gebonden. Dit object zorgt voor de syncronisatie 
 met de View.
-
+```html
 <body ng-app="app">
     <div ng-controller="GuessTheNumberCtrl">
         <h1>Guess the number</h1>
@@ -69,7 +69,7 @@ met de View.
     </div>
 
 </body>
-
+```
 Om Angular te "activeren" in je HTML View, zet je het attribuut (of directive) ng-app in de body. Dit attribuut zorgt 
 ervoor dat alle html tags binnen de angular app kunnen fungeren. De "app" zorgt ervoor dat angular kijkt naar een module 
 die "app" noemt.
