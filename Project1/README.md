@@ -26,7 +26,7 @@ Het gedrag van de View zit eigenlijk in de controller vervat. In AngularJS is de
 (een constructor functie) die het model bevat en heeft een constructie om de view aan zich te binden (dit wil zeggen 
 als er iets verandert (bijvoorbeeld een click, of een wijziging in een input veld) de controller er automatisch weet 
 van heeft. Dit noemen we databinding.
-´´´html
+```html
 var app = angular.module("app", []);
 
 app.controller("GuessTheNumberCtrl", function ($scope)
@@ -47,7 +47,7 @@ app.controller("GuessTheNumberCtrl", function ($scope)
 
     $scope.initialize();
 });
-´´´
+```
 Je merkt op dat de model data vervat zitten in de controller. Het $scope object wordt meegegeven met de controller 
 als parameter en alle functies en parameters worden aan dit $scope object gebonden. Dit object zorgt voor de syncronisatie 
 met de View.
