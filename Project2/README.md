@@ -24,7 +24,7 @@ Een oefening heeft:
 ## Model
 
 Uit de requirements halen we ons model maken:
-
+```html
 function Oefening(args) {
     this.naam = args.naam;
     this.titel = args.titel;
@@ -38,7 +38,7 @@ function WorkOutPlan(args) {
     this.titel = args.titel;
     this.RustTussenOefeningen = args.RustTussenOefeningen;
 }
-
+```
 (Eigenlijk hebben we in deze oefening misschien geen WorkOutPlan nodig, omdat we maar 1 workoutplan implementeren 
 met daarin enkele oefeningen, dus hebben we met de klasse Oefening meer dan genoeg. Maar voor de toekomst kunnen we
 het met de klasse WorkOutPlan makkelijker uitbreiden met nieuwe plannen en oefeningen.
