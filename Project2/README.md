@@ -58,7 +58,7 @@ uit het workoutplan gedaan is moet de volgende oefening opgestart kunnen worden 
 rust periode!). En dit proces moet herhaald worden zolang er oefeningen in het workout plan zitten. 
 
 Maak een javascript bestand: workout.js
-
+```html
 angular.module("workout").controller("WorkOutCtrl",['$scope', function ($scope)
 {
     var rustOefening;
@@ -69,7 +69,7 @@ angular.module("workout").controller("WorkOutCtrl",['$scope', function ($scope)
         console.log("init functie");
         startWorkOut();
     }
-
+```
 In de init functie starten we de startWorkOut. Hier gaan we eerst een workoutplan aanmaken en uiteindelijk dit plan
 met hierin de oefeningen te starten.
 ```html
