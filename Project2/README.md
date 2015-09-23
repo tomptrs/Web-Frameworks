@@ -72,7 +72,7 @@ angular.module("workout").controller("WorkOutCtrl",['$scope', function ($scope)
 
 In de init functie starten we de startWorkOut. Hier gaan we eerst een workoutplan aanmaken en uiteindelijk dit plan
 met hierin de oefeningen te starten.
-
+```html
 ### startWorkOut
 
  var startWorkOut = function ()
@@ -93,7 +93,7 @@ met hierin de oefeningen te starten.
         //Start Oefening
         startOefeningen(workoutPlan.oefeningen.shift());
     }
-
+```
 Je merkt dat in de startWorkOut ook een rustOefening object wordt aangemaakt. Meer info hoe dit object wordt
 aangemaakt op: https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Operators/Object_initializer.
 
@@ -119,7 +119,7 @@ obj3 =
 }
 
 ### CreateWorkOut
-
+```html
  var CreateWorkOut = function ()
     {
         console.log("create workout");
@@ -153,20 +153,21 @@ obj3 =
         console.log(workout);
         return workout;
     }
-
-In de CreateWorkOut instantiëren we een nieuw object van WorkOutPlan: var workout = new WorkOutPlan()
+```
+In de CreateWorkOut instantiÃ«ren we een nieuw object van WorkOutPlan: var workout = new WorkOutPlan()
 Als we naar de constructor kijken zien we dat we hierin een array van oefeningen inbrengen:
-
+```html
 function WorkOutPlan(args) {
     this.naam = args.naam;
     this.oefeningen = [];
     this.titel = args.titel;
     this.RustTussenOefeningen = args.RustTussenOefeningen;
 }
-
+```
 Met de push methode brengen we nieuwe oefeningen in.
 
 ### startoefening
+```html
  var startOefeningen = function (oefening) {
         console.log("start oefeningen")
 
@@ -174,13 +175,13 @@ Met de push methode brengen we nieuwe oefeningen in.
         $scope.huidigOefeningDuration = 0;      
        
     };
-
+```
 Niet alle properties moeten aan het $scope object gehangen worden, enkel deze die in de View getoond worden.
 
 We kunnen de view aanmaken om te testen of we werkelijk de eerste oefening te zien krijgen:
 
 ### de view - part 1.
-
+```html
 <body ng-app="app">
     <div >
         <div >
@@ -211,13 +212,13 @@ We kunnen de view aanmaken om te testen of we werkelijk de eerste oefening te zi
     </div>
 </body>
 </html>
-
+```
 ## Interval Service
 
 Nu willen we dat na de gekregen tijdsduur van de oefening we automatisch de volgend oefening laten zien.
 
 Bij de aanmaak van een oefening:
-
+```html
   workout.oefeningen.push(
             {
                 details: new Oefening(
@@ -228,11 +229,11 @@ Bij de aanmaak van een oefening:
                     }),
                 duration: 10
             }
-
+```
 geven we een property "duration" mee die bepaald hoe lang de oefening duurt. Angular heeft een $interval service
 die een wrapper is over de window.setInterval methode. Het hoofddoel van deze service is het continu oproepen van een 
 bepaalde functie met een specifiek tijdsinterval:
-
+```html
   $interval(function () {
            
             $scope.huidigOefeningDuration++;
@@ -240,14 +241,14 @@ bepaalde functie met een specifiek tijdsinterval:
         1000,
         $scope.huidigeOefening.duration);
 
-
+```
 Hier roepen we de $interval op en geven als eerste argument ene callback functie mee die na een tijdsinterval ( dit is
 de tweede parameter) opgeroepen wordt en dit voor een aantal maal (dit is de derde parameter die meegegeven wordt).
 
 Om de $interval service te gebruiken moeten we deze injecteren in de controller:
-
+```html
 angular.module("workout").controller("WorkOutCtrl",['$scope', '$interval', function ($scope,$interval)
-
+```
 test je programma opnieuw uit (zorg ervoor dat je de $scope.huidigeOefningDuration gelinkt hebt in de UI).
 
 ## $watch
@@ -258,7 +259,7 @@ We weten dat Angular de view update wanneer het model wordt aangepast dankzij de
 heeft een watch functionaliteit die gebruikt kan worden om veranderingen op te volgen in de controller.
 Deze watch functie laat ons toe om een "listener" te registreren die opgeroepen wordt wanneer de $scope verandert ( of 
 een bepaalde waarde krijgt).
-
+```html
   $scope.$watch("huidigOefeningDuration", function (waarde)
         {
             if (waarde == $scope.huidigeOefening.duration)
@@ -274,7 +275,7 @@ een bepaalde waarde krijgt).
             else                
                 startOefeningen(rustOefening);
         }
-
+```
 Test deze code uit.
 
 # Dependecy Injection
@@ -282,7 +283,7 @@ Test deze code uit.
 Modules dienen om code te organizeren en zijn containers voor  bijvoorbeeld controllers, services, directives, filters.
 Angular voorziet in een mechanisme om dependencies te beheren door gebruik te maken van Dependency Injection.
 
-Het idee achter dependency injection is dat een object zijn eigen dependencies niet creëert of beheert. De dependencies
+Het idee achter dependency injection is dat een object zijn eigen dependencies niet creÃ«ert of beheert. De dependencies
 worden van buitenaf voorzien.
 
 Een voorbeeld ter verduidelijking:
