@@ -78,6 +78,29 @@ We gaan bijvoorbeeld het 'value' model met 1 incrementeren door gebruik te maken
 van de controller.
 In voorbeeld3 wordt de ng-init directive gebruikt wanneer de pagina geladen wordt. Deze roept de increment functie , aangemaakt in de controller, aan.
 
+```html
+<script>
+	function myctrl($scope)
+	{
+		$scope.value = 1;
+		
+		$scope.increment = function(inc)
+		{
+			$scope.value += inc;
+		};
+	}
+</script>
+	</head>
+
+	<body ng-app>
+		
+		<div ng-controller="myctrl">
+			<p ng-init="increment(3)">{{value}}</p>
+		</div>
+
+	</body>
+
+```
 ## 4 Encapsulate een model  door middel van een controller's functie
 
 (voorbeeld 4)In plaats van rechtstreeks het model aan te spreken (via scope service), gaan we het model encapsuleren binnen een functie van de controller.
