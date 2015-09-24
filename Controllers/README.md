@@ -7,11 +7,37 @@ De ng-click directive roept de toggle functie op geimplementeerd in de controlle
 
 De visible variabele en de toggle functie zijn gedefinieerd in de $scope service. Deze $scope service wordt aan de controller doorgegeven door middel van dependency injection.
 
-## MVVM pattern
-Deze compositie noemen we het model-view-viewmodel patroon. Het model is de javascript code. Terwijl de view de HTML template is. De viewmodel is de lijm tussen template en model.
-De viewmodel maakt two-way binding mogelijk zodat veranderingen tussen beide in sync blijven.
+```html
 
-In ons voorbeeld is het visible attribuut het model. De controller wordt gebruikt om de scope te definiëren en stelt het viewmodel voor, en interreageert met onze HTML code (de view).
+<script>
+	function myctrl($scope)
+	{
+		$scope.visible = true;
+		
+		$scope.toggle = function()
+		{
+			$scope.visible = !$scope.visible;
+		}
+	}
+</script>
+	</head>
+
+	<body ng-app>
+		
+		<div ng-controller="myctrl">
+			<button ng-click="toggle()">Toggle</button>
+			<p ng-show="visible">Hallo</p>
+		</div>
+
+	</body>
+	
+```
+
+## MVC pattern
+Deze compositie noemen we het model-view-controller patroon. Het model is de javascript code. Terwijl de view de HTML template is. De controller is de lijm tussen template en model.
+De controller maakt two-way binding mogelijk zodat veranderingen tussen beide in sync blijven.
+
+In ons voorbeeld is het visible attribuut het model. De controller wordt gebruikt om de scope te definiëren en stelt het controller voor, en interreageert met onze HTML code (de view).
 
 
 
