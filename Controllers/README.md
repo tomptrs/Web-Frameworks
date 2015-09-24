@@ -39,6 +39,19 @@ De controller maakt two-way binding mogelijk zodat veranderingen tussen beide in
 
 In ons voorbeeld is het visible attribuut het model. De controller wordt gebruikt om de scope te definiëren en stelt het controller voor, en interreageert met onze HTML code (de view).
 
+
+
+
+## 2 Toewijzen van een default waarde aan een model
+
+Controllers voorzien de business logica. Bijvoorbeeld wanneer een gebruiker op een knop klikt zal de controller het model voorbereiden voor de view.
+Als algemene regel kunnen we stellen dat de controller de DOM (document object model) niet manipuleert.
+
+Om een default waarde aan de scope van de controller te hangen maak je gebruik van de ng-controller directive en definieer je de scope variabele in de controller's functie.
+
+De scope is hierarchisch en volgt de DOM hierarchie.
+
+
 ```html
 
 <script>
@@ -58,15 +71,6 @@ In ons voorbeeld is het visible attribuut het model. De controller wordt gebruik
 
 ```
 
-
-## 2 Toewijzen van een default waarde aan een model
-
-Controllers voorzien de business logica. Bijvoorbeeld wanneer een gebruiker op een knop klikt zal de controller het model voorbereiden voor de view.
-Als algemene regel kunnen we stellen dat de controller de DOM (document object model) niet manipuleert.
-
-Om een default waarde aan de scope van de controller te hangen maak je gebruik van de ng-controller directive en definieer je de scope variabele in de controller's functie.
-
-De scope is hierarchisch en volgt de DOM hierarchie.
 
 ## 3 Veranderen van het model door middel van de controller
 
