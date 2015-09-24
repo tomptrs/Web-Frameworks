@@ -287,7 +287,7 @@ Het idee achter dependency injection is dat een object zijn eigen dependencies n
 worden van buitenaf voorzien.
 
 Een voorbeeld ter verduidelijking:
-
+```html
 function Component()
 {
   var logger = new Logger();
@@ -299,7 +299,7 @@ function Component(l)
 {
   var logger = l;
 }
-
+```
 De impact is groot, want door de dependency van buitenaf te voorzien hebben we de mogelijkheid om het logging gedrag
 te beinvloeden zonder extra codering:
 
