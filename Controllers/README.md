@@ -136,5 +136,33 @@ In voorbeeld3 wordt de ng-init directive gebruikt wanneer de pagina geladen word
 Als het model verandert wil je een actie triggeren. Hiervoor maak je gebruik van de watch functie in je controller.
 Het eerste argument van de $watch functie is een angular expressie. Het tweede argument wordt opgeroepen waneer de expressie evaluatie een andere waarde terugkrijgt.
 
+```html
+
+<script>
+	function myctrl($scope)
+	{
+		$scope.name = "";
+		
+		$scope.$watch("name",function(newVal,oldVal)
+		{
+			if($scope.name.length>3)
+			{
+				$scope.greeting = "greetings " + $scope.name;
+			}
+		});
+	}
+</script>
+	</head>
+
+	<body ng-app>
+		
+		<div ng-controller="myctrl">
+			<input type="text" ng-model="name"/>
+			<p>{{greeting}}</p>
+		</div>
+
+	</body>
+
+```
 
 Author: Tom Peeters
