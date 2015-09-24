@@ -302,10 +302,10 @@ function Component(l)
 ```
 De impact is groot, want door de dependency van buitenaf te voorzien hebben we de mogelijkheid om het logging gedrag
 te beinvloeden zonder extra codering:
-
+```html
 var v1 = new Component(new DBlogger);
 var v2 = new Component( new FileLogger);
-
+```
 We hebben 2 variabelen aangemaakt met een verschillende log capaciteit zonder de Component klasse implementatie te 
 veranderen.
 
