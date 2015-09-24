@@ -19,5 +19,18 @@ De $http service supporteert get,head,post,put, delete en jsonp.
 De $http service voegt automatisch HTTP headers toe, maar je kon deze zelf aanbrengen:
 $http.defaults.headers.common["X-custom-Headers"] = "Tom"
 
+```html
+app.controller("PostCtrl",function($scope,$http)
+	{
+		$http.get("data/post.json").success(function(data)
+		{
+			$scope.posts = data;
+		}).error(function(data)
+		{
+			//log error
+		});
+	});
+	```
+
 
 http://viralpatel.net/blogs/angularjs-service-factory-tutorial/
