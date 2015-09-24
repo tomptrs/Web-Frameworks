@@ -39,6 +39,24 @@ De controller maakt two-way binding mogelijk zodat veranderingen tussen beide in
 
 In ons voorbeeld is het visible attribuut het model. De controller wordt gebruikt om de scope te definiëren en stelt het controller voor, en interreageert met onze HTML code (de view).
 
+```html
+
+<script>
+	function myctrl($scope)
+	{
+		$scope.value = "Hallo Tom";
+	}
+</script>
+	</head>
+
+	<body ng-app>
+		
+		<div ng-controller="myctrl">
+			<p>{{value}}</p>
+		</div>
+
+
+```
 
 
 ## 2 Toewijzen van een default waarde aan een model
