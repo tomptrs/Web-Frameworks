@@ -105,6 +105,32 @@ In voorbeeld3 wordt de ng-init directive gebruikt wanneer de pagina geladen word
 
 (voorbeeld 4)In plaats van rechtstreeks het model aan te spreken (via scope service), gaan we het model encapsuleren binnen een functie van de controller.
 
+
+```html
+<script>
+	function myctrl($scope)
+	{
+		$scope.value = 10;
+		
+		$scope.getValue = function()
+		{
+			return $scope.value;
+		};
+	}
+</script>
+	</head>
+
+	<body ng-app>
+		
+		<div ng-controller="myctrl">
+			<p>{{getValue()}}</p>
+		</div>
+
+	</body>
+
+
+```
+
 ## 5 Reageren op scope veranderingen
 
 Als het model verandert wil je een actie triggeren. Hiervoor maak je gebruik van de watch functie in je controller.
