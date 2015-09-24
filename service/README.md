@@ -20,4 +20,4 @@ De $http service voegt automatisch HTTP headers toe, maar je kon deze zelf aanbr
 $http.defaults.headers.common["X-custom-Headers"] = "Tom"
 
 
-
+http://viralpatel.net/blogs/angularjs-service-factory-tutorial/
