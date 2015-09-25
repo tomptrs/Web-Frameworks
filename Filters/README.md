@@ -107,6 +107,46 @@ De suffix ! wordt doorgegeven als een optie aan de filter functie en wordt toege
 
 De filter gaat door alle namen en maakt een nieuwe array aan zonder één bepaald element.
 
+```html
+
+<script>
+	
+	var app = angular.module("MyApp",[]);
+	
+	app.filter("exclude",function()
+	{
+		return function(input,name)
+		{
+			var result =[];
+			
+			
+			for(var i=0; i<input.length;i++)
+			{
+				if(input[i] != name)
+					result.push(input[i]);
+			}
+			
+			return result;
+		};
+	});
+	
+</script>
+	</head>
+
+	<body ng-app = "MyApp">
+		
+		<ul ng-init="names = ['Tom','Arno','Hannes','Mieke']">
+			<li ng-repeat="name in names | exclude: 'Mieke' | orderBy:'-name' ">
+				{{name}}
+			</li>
+		</ul>
+		
+		
+
+	</body>
+	
+```
+
 ## Chaining filters
 
 Filters kunnen gecombineerd worden door middel van de "unix" pipe syntax.
