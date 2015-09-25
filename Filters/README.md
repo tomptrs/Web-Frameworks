@@ -24,6 +24,39 @@ Onze filter zal de tekst omgekeerd weergeven. Angular's filter
 functie verwacht een filter naam en een functie als parameter. Deze functie moet 
 de filterfunctie teruggeven alwaar je de logica zal programmeren.
 
+```html
+
+var app = angular.module("MyApp",[]);
+	
+	app.filter("reverse",function()
+	{
+		return function(input)
+		{
+			var result = "";
+			input = input || "";
+			for(var i=0; i<input.length;i++)
+			{
+				result = input.charAt(i) + result;
+			}
+			return result;
+		};
+	});
+	
+</script>
+	</head>
+
+	<body ng-app = "MyApp">
+		
+		<input type="text" ng-model="text" placeholder="Enter text"/>
+		
+		<p>input : {{ text }}</p>
+		
+		<p> Filtered Input : {{ text | reverse }}</p>
+
+	</body>
+	
+```
+
 ## Schrijven van een eigen filter met opties
 
 Aan een Angular filter kan je parameters meegeven. Deze parameters worden als een hash doorgegeven en kunnen 
