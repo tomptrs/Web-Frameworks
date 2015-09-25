@@ -4,6 +4,20 @@
 
 Deze currency filter zit ingebouwd in Angular.
 
+```html
+
+<body ng-app>
+		
+		<input type="text" ng-model="amount" placeholder="Enter amount"/>
+		
+		<p>Default : {{ amount | currency }}</p>
+		
+		<p> Euro : {{ amount | currency:"Euro" }}</p>
+
+	</body>
+	
+```
+
 ## Schrijven van een eigen filter
 
 Onze filter zal de tekst omgekeerd weergeven. Angular's filter
