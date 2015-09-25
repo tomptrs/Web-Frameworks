@@ -147,7 +147,7 @@ De filter gaat door alle namen en maakt een nieuwe array aan zonder één bepaal
 	
 ```
 
-## Chaining filters
+## Oefening
 
-Filters kunnen gecombineerd worden door middel van de "unix" pipe syntax.
+Schrijf een filter die een namenlijst doorloopt en elke eerste letter in hoofdletter zet.
 
