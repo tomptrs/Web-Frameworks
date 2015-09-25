@@ -63,6 +63,46 @@ Aan een Angular filter kan je parameters meegeven. Deze parameters worden als ee
 onmiddellijk worden verwerkt in de filter functie.
 De suffix ! wordt doorgegeven als een optie aan de filter functie en wordt toegevoegd aan de output
 
+```html
+
+<script>
+	
+	var app = angular.module("MyApp",[]);
+	
+	app.filter("reverse",function()
+	{
+		return function(input,options)
+		{
+			var result = "";
+			input = input || "";
+			var suffix = options["suffix"] || "";
+			for(var i=0; i<input.length;i++)
+			{
+				result = input.charAt(i) + result;
+			}
+			
+			if(input.length > 0)
+				result += suffix;
+			return result;
+		};
+	});
+	
+</script>
+	</head>
+
+	<body ng-app = "MyApp">
+		
+		<input type="text" ng-model="text" placeholder="Enter text"/>
+		
+		<p>input : {{ text }}</p>
+		
+		<p> Filtered Input : {{ text | reverse: { suffix: "!"} }}</p>
+
+	</body>
+	
+
+```
+
 ## Filters met arrays
 
 De filter gaat door alle namen en maakt een nieuwe array aan zonder één bepaald element.
