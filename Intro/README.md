@@ -50,7 +50,7 @@ Enter your name: <input type="text"></input>
 
 ```
 
-## ex1Angular.js
+## Voorbeeld 1
 ### We binden een text input aan een interpolatie
 
 We voegen een ng-model attribuut toe en gebruik de "name" variabele in de expressie, zodat beiden automatisch gesynchroniseerd zijn.
