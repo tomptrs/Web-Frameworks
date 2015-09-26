@@ -37,14 +37,14 @@ De visible variabele en de toggle functie zijn gedefinieerd in de $scope service
 Deze compositie noemen we het model-view-controller patroon. Het model is de javascript code. Terwijl de view de HTML template is. De controller is de lijm tussen template en model.
 De controller maakt two-way binding mogelijk zodat veranderingen tussen beide in sync blijven.
 
-In ons voorbeeld is het visible attribuut het model. De controller wordt gebruikt om de scope te definiëren en stelt het controller voor, en interreageert met onze HTML code (de view).
+In ons voorbeeld is het visible attribuut het model. De controller wordt gebruikt om de scope te definiëren en stelt de controller voor, en interreageert met onze HTML code (de view).
 
 
 
 
 ## 2 Toewijzen van een default waarde aan een model
 
-Controllers voorzien de business logica. Bijvoorbeeld wanneer een gebruiker op een knop klikt zal de controller het model voorbereiden voor de view.
+Controllers voorzien in business logica. Bijvoorbeeld wanneer een gebruiker op een knop klikt zal de controller het model voorbereiden voor de view.
 Als algemene regel kunnen we stellen dat de controller de DOM (document object model) niet manipuleert.
 
 Om een default waarde aan de scope van de controller te hangen maak je gebruik van de ng-controller directive en definieer je de scope variabele in de controller's functie.
