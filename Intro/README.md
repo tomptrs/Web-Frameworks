@@ -26,7 +26,33 @@ Enter your name : <input type="text" ng-model="name"></input>
 
 Vergelijk met jQuery:
 
+```html
 
+<head>
+		<title>ex1</title>
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+
+	<script>
+		$(function()
+		{
+			$("input").keypress(function()
+			{
+				$("#name").text($(this).val());
+			});
+		});
+	</script>
+	
+	</head>
+
+	<body>
+
+Enter your name: <input type="text"></input>
+<p id="name"></p>
+	</body>
+	
+
+```
 
 ## ex1Angular.js
 ### We binden een text input aan een interpolatie
