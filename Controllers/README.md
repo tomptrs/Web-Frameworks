@@ -3,7 +3,7 @@
 We gebruiken de ng-show directive samen met de controller om de visibiliteit te veranderen na een button click.
 
 We gebruiken de ng-controller directive om ons div element samen met de child elementen te binden aan de context van de myctrl controller.
-De ng-click directive roept de toggle functie op geimplementeerd in de controller. De ng-show directive is gebonden aan de visible scope variabele.
+De ng-click directive roept de toggle functie op die geimplementeerd is in de controller. De ng-show directive is gebonden aan de visible scope variabele.
 
 De visible variabele en de toggle functie zijn gedefinieerd in de $scope service. Deze $scope service wordt aan de controller doorgegeven door middel van dependency injection.
 
