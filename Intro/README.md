@@ -15,11 +15,7 @@ De magie zit in de ng-app directive!
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
 	</head>
 
-	<body ng-app>
-<h1>binding a text input to an expression</h1>
-Enter your name : <input type="text" ng-model="name"></input>
-<p> hello {{name}}</p>
-	</body>
+
 	
 ```
 
@@ -60,3 +56,13 @@ Enter your name: <input type="text"></input>
 We voegen een ng-model attribuut toe en gebruik de "name" variabele in de expressie, zodat beiden automatisch gesynchroniseerd zijn.
 Wanneer je in het input veld typt zullen deze veranderingen automatisch te zien zijn in het paragraaf element. Dit wordt data binding genoemd.
 
+```html
+
+	<body ng-app>
+<h1>binding a text input to an expression</h1>
+Enter your name : <input type="text" ng-model="name"></input>
+<p> hello {{name}}</p>
+	</body>
+	
+
+```
