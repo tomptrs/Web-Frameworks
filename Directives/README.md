@@ -9,3 +9,11 @@ Het wordt gebonden aan het checked model door de attribuut waarde terwijl de che
 Andere voorbeelden van directives zijn: ng-hide, ng-checked , ng-mouseenter..
 
 
+```html
+
+<body ng-app>
+		<label><input type="checkbox" ng-model="checked"/>Toggle button</label>
+    <button ng-disabled="checked">Press me</button>
+</body>
+	
+```
