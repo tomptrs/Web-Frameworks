@@ -63,6 +63,7 @@ We gebruiken $routingProvider om onze routes te beschrijven, en deze service inj
 
 De code in onze script.js wordt nu:
 
+```html
 var app = angular.module('app', ['ngRoute']);
 
 /*
@@ -106,11 +107,13 @@ app.controller('aboutController', function ($scope) {
 app.controller('contactController', function ($scope) {
     $scope.message = 'Contact us!';
 });
+```
 
 Bemerk dat bij het aanmaken van de app module de ng-Route injecteren!
 
 De index.html file:
 
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,10 +147,11 @@ De index.html file:
     </div>
 </body>
 </html>
-
+```
 En de Pages in de Pages folder:
 about.html:
 
+```html
 <div>
     <h1>About</h1>
 
@@ -162,14 +166,18 @@ contact.html:
     <p>{{ message }}</p>
 </div>
 
+```
+
 home.html
 
+```html
 <div >
     <h1>Home</h1>
 
     <p>{{ message }}</p>
 </div>
 
+```
 Test je eerste SinglePage app uit!
 
 
