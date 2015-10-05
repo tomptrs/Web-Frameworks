@@ -180,6 +180,8 @@ home.html
 ```
 Test je eerste SinglePage app uit!
 
+ng-view is een angular directive die een template van de route in the html pagina injecteert.
+
 
 
 
