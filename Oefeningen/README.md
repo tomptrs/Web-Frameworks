@@ -16,7 +16,7 @@ Vul verder aan:
 
 		// Let's namespace the user details
 		// Also great for DOM visual aids too
-		$scope.details = [];
+		$scope.details = ??
 
 	}]); 
 	
