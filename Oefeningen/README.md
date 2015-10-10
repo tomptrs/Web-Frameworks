@@ -1,5 +1,11 @@
 # Oefening 1
 
+Schrijf een angular app om een h1 tag via de web applicatie aan te passen
+
+![oefening 1](oefh1.PNG)
+
+# Oefening 2
+
 ![oefening 1](oef1.PNG)
 
 Vul verder aan:
@@ -51,7 +57,7 @@ Vul verder aan:
 ```
 
 
-# Oefening 2: Shopping Cart - Deel 1
+# Oefening 3: Shopping Cart - Deel 1
 
 Maak een view en controller met een lijst van producten. Een product bestaat uit een naam
 een hoeveelheid, en een prijs. In de view kan je met de ng-repeat directive een lijst van producten uitlezen.
@@ -62,14 +68,14 @@ wordt automatisch de prijs aangepast.
 ![oef Shopping Cart](oef2_shoppingCart.PNG)
 
 
-## Oefening 2: Shopping Cart - Deel 2
+## Oefening 4: Shopping Cart - Deel 2
 
 Voeg na elk item in de view een button "remove" toe. Na klikken moet het product 
 verdwenen zijn.
 
 ![oef Shopping Cart](oef2_shoppingCart_remove.PNG)
 
-## Oefening 2: Shopping Cart - Deel 3 - Watch functionality
+## Oefening 5: Shopping Cart - Deel 3 - Watch functionality
 
 Voeg extra producten toe die de gebruiker kan selecteren door middel van 
 checkboxes. Bekijk : 
