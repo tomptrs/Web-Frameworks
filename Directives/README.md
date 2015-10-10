@@ -37,3 +37,8 @@ Andere voorbeelden van directives zijn: ng-hide, ng-checked , ng-mouseenter..
 </body>
 	
 ```
+
+
+Meer info op deze blog:
+http://www.sitepoint.com/practical-guide-angularjs-directives/
+http://weblogs.asp.net/dwahlin/creating-custom-angularjs-directives-part-i-the-fundamentals
