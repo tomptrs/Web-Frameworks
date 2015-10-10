@@ -18,7 +18,7 @@ encapsuleren we in de controller.
  * [Mogelijkheid om een getal te raden: bewaren we in de variabele "guess"]
  * [Bijhouden hoeveel keer je gegokt hebt: bewaren we in de variabele "aantalPogingen"]
  * [De gebruiker hints geven op basis van de inut: bewaren we in de variabele "afwijking"]
- * [Laten weten dat het getal: zit mee in de variabele afwijking]
+
 
 ### opbouw controller
 
@@ -82,7 +82,7 @@ Dus {{ aantalPogingen }} zit tussen de interpolatie en is zo gebonden aan de $sc
 Directives zijn speciale constructies (attributen) die de standaard HTML uitbreiden. Ze geven extra gedrag aan deze tags.
 (Het is zelfs mogelijk om eigen directives te maken). In ons voorbeeld:
 * ng-model: zorgt voor de binding tussen de $scope en de attribuut waarden van ng-model. Bij veranderingen in het input veld
-<input type="number" ng-model="guess" /> zal de guess variabele in de controller automatisch veranderen, maar ook als
+```html <input type="number" ng-model="guess" /> ``` zal de guess variabele in de controller automatisch veranderen, maar ook als
 de variabele in de controller zou veranderen zal de UI automatisch updaten.
 
 * ng-click: de click zal een functie in de controller opstarten.
@@ -95,6 +95,10 @@ We kunnen nog wat extra's doen met bindings en gebruik maken van expressies. De 
 true of fase en dus gebruiken we hier expressies: afwijking > 0
 
 Gebruik de chrome extense batarang voor AngularJS debugging functionaliteit.
+Als deze niet werkt, kan je ook Angular JS Batarang (Stable) gebruiken: https://chrome.google.com/webstore/detail/angularjs-batarang-stable/niopocochgahfkiccpjmmpchncjoapek/related
+
+![batarang](batarang.PNG)
+
 
 ##scope
 
