@@ -48,6 +48,10 @@ app.controller("GuessTheNumberCtrl", function ($scope)
     $scope.initialize();
 });
 ```
+
+We bemerken $scope.initialize = function() : dit noemen we een "function 
+expression", of anonymous function. Een functie zonder naam.
+
 Je merkt op dat de model data vervat zitten in de controller. Het $scope object wordt meegegeven met de controller 
 als parameter en alle functies en parameters worden aan dit $scope object gebonden. Dit object zorgt voor de syncronisatie 
 met de View.

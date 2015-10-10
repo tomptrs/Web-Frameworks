@@ -1,6 +1,6 @@
 # Directives
 
-Directives zijn belangrijke componenten in het AngularJS framework. Directives breiden de DOM / HTML syntax uit. Een element als een datepicker is voor ons normaal, alhoewel HTML dit niet kent. Dankzij jQuery code of directives in AngularJS kunnen we deze functionaliteit makkelijk gebruiken.
+Directives zijn belangrijke componentne in het AngularJS framework. Directives breiden de DOM / HTML syntax uit. Een element als een datepicker is voor ons normaal, alhoewel HTML dit niet kent. Dankzij jQuery code of directives in AngularJS kunnen we deze functionaliteit makkelijk gebruiken.
 
 Je komt dikwijls built-in directives tegen: ng-model, ng-repeat, ng-show,.. Het ng-repeat directive herhaalt een element en de ng-show toont een element afhankelijk van de conditionele logica. Buiten built-in directives kan je zelf eigen directives schrijven.
 
