@@ -42,3 +42,115 @@ Andere voorbeelden van directives zijn: ng-hide, ng-checked , ng-mouseenter..
 Meer info op deze blog:
 http://www.sitepoint.com/practical-guide-angularjs-directives/
 http://weblogs.asp.net/dwahlin/creating-custom-angularjs-directives-part-i-the-fundamentals
+
+## Voorbeeld eigen directive
+
+```html
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>directive1</title>
+<script type="text/javascript" src="angular.min.js"></script>
+	<script>
+		var app = angular.module("app", []);
+		app.directive('helloWorld', function() {
+			return {
+				restrict : 'AE',
+				replace : 'true',
+				template : '<h3>Hello World!!</h3>'
+			};
+		});
+		</script>
+		
+		<script>
+		
+		
+		app.directive('myClock', function () {
+			return {
+				template: '<p>My clock! </p>'
+			};
+		});
+		
+	</script>
+	
+	</head>
+
+	<body ng-app="app">
+
+
+<div data-my-clock></div>
+
+<hello-World></hello-World>
+<div hello-world></div>
+
+OR
+
+<div x-hello-world></div>
+	</body>
+</html>
+```
+
+## Voorbeeld 2 
+
+```html
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>directive1</title>
+<script type="text/javascript" src="angular.min.js"></script>
+	<script>
+		var app = angular.module("app", []);
+		app.directive('helloWorld', function() {
+			return {
+				restrict : 'AE',
+				replace : 'true',
+				template : '<h3>Hello World!!</h3>'
+			};
+		});
+		</script>
+		
+	<script>
+		
+		app.directive('myClock', function () {
+			return {
+				template: '<p>{{ time }}</p>',
+				restrict: 'AE',
+				replace: true,				
+				//TODO: veranderen met interval service
+				controller: function ($scope) {
+					// bootstrapper
+					$scope.time = new Date();
+					// interval loop
+					setInterval(function () {
+						$scope.time = new Date(); 
+						$scope.$apply(); // handmatig tijd bijwerken in de scope
+					}, 1000);
+				
+				}
+				
+			};
+		});
+		
+	</script>
+	
+	</head>
+
+	<body ng-app="app">
+
+
+<div data-my-clock></div>
+
+
+	</body>
+</html>
+
+
+```
