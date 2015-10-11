@@ -97,6 +97,22 @@ met hierin de oefeningen te starten.
 Je merkt dat in de startWorkOut ook een rustOefening object wordt aangemaakt. Meer info hoe dit object wordt
 aangemaakt op: https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Operators/Object_initializer.
 
+## Structuur van een JSON object
+
+-	Data wordt georganiseerd als key-value pairs
+-	Documenten bevatten name-value pairs, gescheiden door een komma
+-	Een document start met { en eindigt met }
+-	Namen zijn strings: bijvoorbeeld: customer_id, adres,..
+-	Waarden kunnen numbers, strings, Booleans, arrays, objecten, NULL zijn.
+-	De waarden van een array worden opgelijst beginnende met [ en eindigen met ]
+-	De waarden van een object zijn opnieuw key-value pairs beginnend met { en eindigen met }
+
+Dus een document is een set key-value pairs. De keys worden als strings voorgesteld, terwijl de values basic types kunnen bevatten, of structuren kunnen zijn (arrays, objecten).
+
+Documenten bevatten zowel de structuur als de data. JSON en XML zijn 2 formaten die hiervoor vaak gebruikt worden.
+Meerdere documenten worden in een collectie gestopt. Collecties zijn dus een lijst van documenten. Document database designers moeten denken aan het zo snel mogelijk kunnen toevoegen, verwijderen, updaten en zoeken naar documenten. Belangrijk te weten is dat documenten binnen een collectie niet persé dezelfde structuur moeten aannemen.
+
+
 Op het einde van de functie wordt de functie startOefeningen opgeroepen met als argument:workoutPlan.oefeningen.shift().
 De shift methode op een array zal het eerste item uit de array verwijderen en dit item retourneren.
 
