@@ -8,7 +8,16 @@ Verder is het beter om bijvoorbeeld de $http service niet in de controller te im
 
 In Angular worden controllers aangemaakt, maar ook verwijderd als ze verschijnen en verdwijnen van een pagina. Dit in tegenstelling tot services. Deze worden éénmaal aangemaakt (wanneer je ze nodig hebt), maar als andere componenten deze nodig hebben zal Angular dezelfde instantie van de service hergebruiken. Je "dependency inject" de service zoals bijvoorbeeld de $scope service.
 
-De factory methode maakt een singleton UserService die 2 functies bevat. De controllers krijgen de UserService door deze te injecteren in de controller's functie als parameter.
+Een service is een object met functies. Deze functies kunnen aangeroepen worden door controller, directives, filters,.. 
+Dus de business logica om een HTTP call te doen (om data van een server te halen) kan ook
+in de service geimplementeerd worden.
+
+AngularJS heeft ook enkele interne services, zoals $http, $route, $window, $location. Als een controller deze wil gebruiken moeten ze geinjecteerd worden in de controller:
+
+module.controller("testCtrl",function($http){});
+of
+module.controller("testCtrl,function($window){});
+
 
 ## Requesting JSON data met AJAX
 
@@ -38,3 +47,9 @@ app.controller("PostCtrl",function($scope,$http)
 
 
 http://viralpatel.net/blogs/angularjs-service-factory-tutorial/
+
+## Eigen services aanmaken
+
+
+
+De factory methode maakt een singleton UserService die 2 functies bevat. De controllers krijgen de UserService door deze te injecteren in de controller's functie als parameter.
