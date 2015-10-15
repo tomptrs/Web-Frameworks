@@ -2,7 +2,11 @@
 
 ## Sharing code tussen controllers door middel van Services
 
-Om business logica te delen tussen controllers kan je gebruik maken van Services. Door dependency injection kan je een service in je controllers gebruiken
+Om business logica te delen tussen controllers kan je gebruik maken van Services. Door dependency injection kan je een service in je controllers gebruiken.
+
+Verder is het beter om bijvoorbeeld de $http service niet in de controller te implementeren, maar in een service. Op die manier laat je hergebruik van code toe. Buiten data-binding laat AngularJS ook toe om onze code in logische secties onder te verdelen.
+
+In Angular worden controllers aangemaakt, maar ook verwijderd als ze verschijnen en verdwijnen van een pagina. Dit in tegenstelling tot services. Deze worden éénmaal aangemaakt (wanneer je ze nodig hebt), maar als andere componenten deze nodig hebben zal Angular dezelfde instantie van de service hergebruiken. Je "dependency inject" de service zoals bijvoorbeeld de $scope service.
 
 De factory methode maakt een singleton UserService die 2 functies bevat. De controllers krijgen de UserService door deze te injecteren in de controller's functie als parameter.
 
