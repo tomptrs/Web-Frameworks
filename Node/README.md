@@ -1,12 +1,12 @@
 # NodeJS Info
 
 ## Wat?
-Node.js is een platform dat gebaseerd is op de V8 JavaScript engine van Google†
-Node.js is eigenlijk een back-end variant van de JavaScript die wij kennen (voor front-end development van websites). Dit platform zorgt voor snelle I/O events zoals web calls, netwerk communicatie, files, Ö .
+Node.js is een platform dat gebaseerd is op de V8 JavaScript engine van Google¬†
+Node.js is eigenlijk een back-end variant van de JavaScript die wij kennen (voor front-end development van websites). Dit platform zorgt voor snelle I/O events zoals web calls, netwerk communicatie, files, ‚Ä¶ .
 
 ## Evented architecture
 
-Idee van ìconcurrencyî = laat verschillende zaken op hetzelfde tijdstip gebeuren
+Idee van ‚Äúconcurrency‚Äù = laat verschillende zaken op hetzelfde tijdstip gebeuren
 Java zal een nieuwe thread starten voor elke connectie.
 Nadeel multi-threading:
 4MB memory voor elke connectie
@@ -36,7 +36,7 @@ Wanneer de database het resultaat aan het zoeken is, is de thread vrij om iets a
 
 ## Node.js prompt
 
-![prompts](nodeprompt.PNG)
+![prompts](nodeprompt.png)
 
 
 ## Standard libraries, vb. http
@@ -88,9 +88,9 @@ NodeJS-inspector: https://github.com/node-inspector/node-inspector
 
 ## CommonJS Modules
 
-CommonJS modules heeft ìrequireî en ìexportsî functionaliteit
+CommonJS modules heeft ‚Äúrequire‚Äù en ‚Äúexports‚Äù functionaliteit
 Geeft de mogelijkheid om andere modules in te laden (require) of 
-variabele naar andere modules te ìexposenî.
+variabele naar andere modules te ‚Äúexposen‚Äù.
 
 ```html
 
