@@ -79,11 +79,11 @@ nodemon server.js
 NodeJS-inspector: https://github.com/node-inspector/node-inspector
 
 
-![nodeInsp](nodeInsp1.PNG)
+![nodeInsp](nodeInsp1.png)
 
-![nodeInsp](nodeInsp2.PNG)
+![nodeInsp](nodeInsp2.png)
 
-![nodeInsp](nodeInsp3.PNG)
+![nodeInsp](nodeInsp3.png)
 
 
 ## CommonJS Modules
