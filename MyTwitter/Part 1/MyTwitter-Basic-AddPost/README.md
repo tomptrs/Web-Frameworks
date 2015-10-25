@@ -5,6 +5,8 @@
 In de UI kunnen we een ng-click directive gebruiken die wordt gebruikt om een functie
 op het $scope object op te roepen.
 
+```html
+
 $scope.addPost =  function()
 	{
 		$scope.posts.unshift({
@@ -13,6 +15,7 @@ $scope.addPost =  function()
 		});
 	};
 
+```
 Unshift is een JavaScript methode op arrays die een nieuwe element op positie 0 zet 
 (het begin van de array).
 
@@ -24,7 +27,7 @@ aan een unordered list <ul> in de UI.
 ## DataBinding
 
 In Controller/JavascriptController is een "twitterController" aangemaakt.
-Vanuit dit voorbeeld kunnen we makkelijk databinding uitleggen, één van de betere
+Vanuit dit voorbeeld kunnen we makkelijk databinding uitleggen, Ã©Ã©n van de betere
 functionaliteiten van AngularJS.
 
 Databinding = het proces om data te linken van het model aan de user interface. Databinding
@@ -32,5 +35,36 @@ is een "2-way proces": wanneer data op de web pagina wordt veranderd, zal het mo
 geupdate worden.
 
 Het model is de enigste bron van data ter representatie in de UI.
+
+```html
+
+var app = angular.module("app",[]);
+
+app.controller("twitterController",function($scope){
+	
+	$scope.posts = [
+	{
+		username:"tomptrs",
+		body: "hallo wereld!"
+	},
+		{
+		username:"mvdp",
+		body: "Angular test!"
+	},
+	];
+	
+
+	$scope.addPost =  function()
+	{
+		$scope.posts.unshift({
+			username:"hannes & arno",
+			body:"Hallo, een nieuwe entry"
+		});
+	};
+	
+	
+});
+
+```
 
 
