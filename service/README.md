@@ -46,6 +46,110 @@ app.controller("PostCtrl",function($scope,$http)
 	```
 
 
+## Introductie
+
+In AngularJS zijn services singleton objecten of functies die bepaalde taken uitvoeren.
+De controller is verantwoordelijk voor het binden van de data aan de view (door
+middel van $scope), en zou geen logica mogen bevatten om data op te halen of te 
+manipuleren.
+
+Voor het ophalen of manipuleren gebruiken we services. Services bevatten 
+functionaliteit die kan opgeroepen worden vanuit controllers, directives, filters.
+Om code te delen tussen verschillende controllers kan je dus ook beroep doen op
+deze services.
+
+Angular heeft verschillende interne services: $http, $route, $window, $location..
+
+## Eigen service ontwikkelen
+
+Er zijn 2 mogelijkheden om een service aan te maken:
+
+```html
+
+var app = angular.module("myapp",[]);
+app.service("testservice",function(){
+	this.data = [1,2,3,4,5];
+});
+
+```
+
+of via een factory methode:
+
+app.factory("testservice,function(){
+	var obj = {};
+	obj.data = [1,2,3,4,5];
+	return obj;
+});
+
+
+
+## Een voorbeeld
+
+```html
+
+<script>
+	
+	var app = angular.module("myapp",[]);
+	
+	app.factory("myservice",function(){
+		var obj = {};
+		obj.users = ["tom","mieke","hannes","arno"];
+		
+		return obj;
+	});
+	
+	
+	app.controller("myctrl",function($scope, myservice){
+		
+		$scope.users = myservice.users;
+		
+	});
+	
+	app.controller("myctrl2",function($scope,myservice){
+		$scope.getdata = function(){
+			$scope.data = myservice.users;
+		};
+		
+	});
+</script>
+	
+	</head>
+
+	<body ng-app="myapp">
+		<div ng-controller="myctrl">
+			{{users}}
+		</div>
+		
+		
+		<div ng-controller="myctrl2">
+			<ul>
+				<li ng-repeat="x in data">{{x}}</li>
+			</ul>
+			<button ng-click="getdata()" value="getdata">
+				get data
+			</button>
+		</div>
+
+	</body>
+
+```
+
+De service wordt ingeladen door dependency injection.
+
+## Oefening
+
+Maak een service aan die 2 getallen kan optellen, aftrekken, vermenigvuldigen en delen.
+<
+
+De factory methode maakt een singleton testService die 2 functies bevat. 
+De controllers krijgen de UserService door deze te injecteren in de controller's functie als parameter.
+
+De $http service die je regelmatig in een controller ziet opduiken, zou beter zijn 
+om deze in een custom service te ontwikkelen, om zo meer beheerbaardere code te schrijven.
+
+
+
+
 http://viralpatel.net/blogs/angularjs-service-factory-tutorial/
 
 ## Eigen services aanmaken
