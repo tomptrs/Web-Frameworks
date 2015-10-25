@@ -43,7 +43,7 @@ app.controller("PostCtrl",function($scope,$http)
 			//log error
 		});
 	});
-	```
+```
 
 
 ## Introductie
@@ -75,12 +75,13 @@ app.service("testservice",function(){
 
 of via een factory methode:
 
+```html
 app.factory("testservice,function(){
 	var obj = {};
 	obj.data = [1,2,3,4,5];
 	return obj;
 });
-
+```
 
 
 ## Een voorbeeld
