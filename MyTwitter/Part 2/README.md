@@ -6,6 +6,8 @@ Start met het initializeren van je NodeJS Application met het commando:
 
 Dit commando initieert je NodeJS app, en maakt een package.json bestand aan.
 
+```html
+
 {
   "name": "mytwitter",
   "version": "1.0.0",
@@ -23,6 +25,8 @@ Dit commando initieert je NodeJS app, en maakt een package.json bestand aan.
   "license": "ISC"
 }
 
+```
+
 Het maken van een package.json file is het enigste wat je eigenlijk moet doen,
 om van je directory een node project te maken.
 
@@ -34,6 +38,8 @@ npm install express --save
 npm install body-parser --save
 
 # Maak je Express server
+
+```html
 
 var express = require("express");
 var bodyparser = require("body-parser");
@@ -56,8 +62,11 @@ app.listen(3000,function(){
 	console.log("listening on 3000");
 });
 
+```
 
 ## Uitleg
+
+```html
 app.get("/api/posts",function(req,res){
 	console.log("get posts");
 	res.json([
@@ -67,6 +76,8 @@ app.get("/api/posts",function(req,res){
 		}]);
 });
 
+```
+
 Je kan browsen naar http://localhost:3000/api/posts en dan zal je een log message 
 "get posts" zien.
 We sturen ook JSON data terug. Deze manier van werken om een stubbed json bericht
@@ -75,19 +86,22 @@ je pad wel degelijk werkt.
 
 ### Posten van data
 
+```html
 app.post("/api/posts",function(req,res){
 	console.log("post bericht ontvangen");
 	console.log(req.body.username);
 	console.log(req.body.body);
 	res.send(201);
 });
-
+```
 in plaats van in je browser naar http://localhost:3000/api/posts te surfen gaan we
 een post method sturen om data naar de server te sturen. Dergelijke methode kan je niet
 via de browser testen, daarom installeren we de chrome extensie 'Postman'.
 In de body schrijf je een json object:
+```html
 {
  "username":"tom",
  "body":"test"
 }
 
+```

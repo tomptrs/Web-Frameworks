@@ -1,12 +1,12 @@
 # NodeJS Info
 
 ## Wat?
-Node.js is een platform dat gebaseerd is op de V8 JavaScript engine van Google†
-Node.js is eigenlijk een back-end variant van de JavaScript die wij kennen (voor front-end development van websites). Dit platform zorgt voor snelle I/O events zoals web calls, netwerk communicatie, files, Ö .
+Node.js is een platform dat gebaseerd is op de V8 JavaScript engine van Google¬†
+Node.js is eigenlijk een back-end variant van de JavaScript die wij kennen (voor front-end development van websites). Dit platform zorgt voor snelle I/O events zoals web calls, netwerk communicatie, files, ‚Ä¶ .
 
 ## Evented architecture
 
-Idee van ìconcurrencyî = laat verschillende zaken op hetzelfde tijdstip gebeuren
+Idee van ‚Äúconcurrency‚Äù = laat verschillende zaken op hetzelfde tijdstip gebeuren
 Java zal een nieuwe thread starten voor elke connectie.
 Nadeel multi-threading:
 4MB memory voor elke connectie
@@ -36,7 +36,7 @@ Wanneer de database het resultaat aan het zoeken is, is de thread vrij om iets a
 
 ## Node.js prompt
 
-![prompts](nodeprompt.PNG)
+![prompts](nodeprompt.png)
 
 
 ## Standard libraries, vb. http
@@ -79,18 +79,18 @@ nodemon server.js
 NodeJS-inspector: https://github.com/node-inspector/node-inspector
 
 
-![nodeInsp](nodeInsp1.PNG)
+![nodeInsp](nodeInsp1.png)
 
-![nodeInsp](nodeInsp2.PNG)
+![nodeInsp](nodeInsp2.png)
 
-![nodeInsp](nodeInsp3.PNG)
+![nodeInsp](nodeInsp3.png)
 
 
 ## CommonJS Modules
 
-CommonJS modules heeft ìrequireî en ìexportsî functionaliteit
+CommonJS modules heeft ‚Äúrequire‚Äù en ‚Äúexports‚Äù functionaliteit
 Geeft de mogelijkheid om andere modules in te laden (require) of 
-variabele naar andere modules te ìexposenî.
+variabele naar andere modules te ‚Äúexposen‚Äù.
 
 ```html
 
@@ -192,12 +192,16 @@ Index.js : entry point voor de module
 Maak een standard http server. Bij ontvangen van een request lees je een
 csv file in (key values pairs) en retourneer dit in JSON formaat.
 
+```html
 csv file:
 Key1,Value1
 Key2,Value2
 Key3,Value3
 
+```
+
 Hoe te starten:
+
 1. Importeer de http en fs libraries (require).
 2. Maak een http server
 3. Lees de csv file in met de readFile functie
@@ -313,3 +317,57 @@ om deze API te testen
 ![postman](postman.PNG)
 
 	
+
+## Integratie Node & Angular
+
+Om een "call" te maken van angular (client-side) naar je node applicatie (server side, 
+want fungeert als je web server), kan je gebruik maken van Angular built-in HTTP client: 
+$http. $http.get(), $http.post().
+
+Dit is PROMISE based: een manier om asynchrone code en callbacks te ontwikkelen:
+
+```html
+
+$http.get("http://localhost:3000/api/posts")
+	.success(function(posts){
+		//DOE IETS
+	})
+	.error(function(err){
+		//DOE IETS
+	});
+
+```
+
+Bij een promise krijg je een object terug waarop je methodes kan oproepen (success,error).
+
+Je moet nu je $scope.posts array vervangen door een http get & post call naar de node server.
+
+```html
+	
+app.controller("twitterController",function($scope,$http){
+	
+	
+	
+	$http.get("http://localhost:3000/api/posts")
+	.success(function(posts){
+		$scope.posts = posts;
+	});
+	
+
+	$scope.addPost =  function()
+	{
+		$http.post("http://localhost:3000/api/posts",{
+			"username":"tt",
+			"body":"hello body"
+		}).success(function(post){
+			console.log(post);
+			$scope.posts.unshift(post);
+		});
+			
+	};
+	
+	
+});
+
+
+```
