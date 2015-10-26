@@ -192,12 +192,16 @@ Index.js : entry point voor de module
 Maak een standard http server. Bij ontvangen van een request lees je een
 csv file in (key values pairs) en retourneer dit in JSON formaat.
 
+```html
 csv file:
 Key1,Value1
 Key2,Value2
 Key3,Value3
 
+```
+
 Hoe te starten:
+
 1. Importeer de http en fs libraries (require).
 2. Maak een http server
 3. Lees de csv file in met de readFile functie
