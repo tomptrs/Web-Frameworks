@@ -5,14 +5,14 @@
 
 De ontwikkeling van relationele databases betekende een geweldige verbetering in 
 het data landschap. Gebaseerd op een simpel wiskundig model, had men een 
-oplossing voor data anomaliën ( inconsistente data).
-Maar door een exponentiële groei van e-commerce en sociale media wordt de 
+oplossing voor data anomaliÃ«n ( inconsistente data).
+Maar door een exponentiÃ«le groei van e-commerce en sociale media wordt de 
 focus in databases gelegd op scalability, low cost, flexible en highly 
 available. Deze doelen zijn moeilijker te bereiken met relationele databases,
 mede door de hoge kosten die deze met zich meebrengen.
 
 ### Scalability
-Om op de gepaste tijdstippen een variërende workload te hebben. 
+Om op de gepaste tijdstippen een variÃ«rende workload te hebben. 
 Bijvoorbeeld bij een spike in trafiek naar je website kan met extra
  servers online brengen om de load op te vangen. Bij gebruik van 
 relationele databanken is een dergelijke scale moeilijk te beheren. 
@@ -51,7 +51,7 @@ Bijvoorbeeld:
   "LastName": "Peeters",
   "beroep":  "Lector"
 }
-Éen van de belangrijkste karakteristieken van een docuemnt database is dat 
+Ã‰en van de belangrijkste karakteristieken van een docuemnt database is dat 
 het geen vast schema (zoals relationele databases) nodig heeft vooraleer je 
 data kan toevoegen. Het toevoegen van een document maakt ook het onderliggende 
 schema!
@@ -74,11 +74,15 @@ de databank te halen.
 
 Bijvoorbeeld:
 
-Stap 1: maak een collectie aan
+Stap 1: maak een database aan:
+
+use myDb
+
+Stap 2: maak een collectie aan
 
 db.createCollection("employees");
 
-Stap 2: Voeg data toe:
+Stap 3: Voeg data toe:
 
 db.employees.insert( {"naam":"peeters","voornaam":"tom" })
 
@@ -92,7 +96,7 @@ db.employees.find({"voornaam":"tom"});
 ## Verschillen met een relationele database
 
 -	Ten eerste hebben we bij een NoSQL database geen vast schema meer nodig.
--	Een volgend belangrijk verschil is dat een document “embedded” documenten alsook een lijst van warden (array) kan bevatten.
+-	Een volgend belangrijk verschil is dat een document â€œembeddedâ€ documenten alsook een lijst van warden (array) kan bevatten.
 
 {
   "firstName": "Tom",
@@ -118,7 +122,7 @@ Het embedden van documenten of lijsten zorgt ervoor dat we geen joins moeten uit
 
 ## Wat is een document?
 
-Voor de gemakkelijkheid beginnen we met een HTML document. Deze bevatten content en formatting commando’s. HTML documenten gebruiken voor gedefinieerde tags om de content te formatteren. Documents in een document database hebben deze voor gedefinieerde beperkingen niet. Ontwikkelaars zijn vrij om de structuur te kiezen.
+Voor de gemakkelijkheid beginnen we met een HTML document. Deze bevatten content en formatting commandoâ€™s. HTML documenten gebruiken voor gedefinieerde tags om de content te formatteren. Documents in een document database hebben deze voor gedefinieerde beperkingen niet. Ontwikkelaars zijn vrij om de structuur te kiezen.
 Bijvoorbeeld een customer record in JSON notatie:
 {
   "customer_id": 123,
@@ -144,16 +148,16 @@ Bijvoorbeeld een customer record in JSON notatie:
 Dus een document is een set key-value pairs. De keys worden als strings voorgesteld, terwijl de values basic types kunnen bevatten, of structuren kunnen zijn (arrays, objecten).
 
 Documenten bevatten zowel de structuur als de data. JSON en XML zijn 2 formaten die hiervoor vaak gebruikt worden.
-Meerdere documenten worden in een collectie gestopt. Collecties zijn dus een lijst van documenten. Document database designers moeten denken aan het zo snel mogelijk kunnen toevoegen, verwijderen, updaten en zoeken naar documenten. Belangrijk te weten is dat documenten binnen een collectie niet persé dezelfde structuur moeten aannemen.
+Meerdere documenten worden in een collectie gestopt. Collecties zijn dus een lijst van documenten. Document database designers moeten denken aan het zo snel mogelijk kunnen toevoegen, verwijderen, updaten en zoeken naar documenten. Belangrijk te weten is dat documenten binnen een collectie niet persÃ© dezelfde structuur moeten aannemen.
 
 # Tips in Collectie design
 
 Collecties bevatten een lijst van documenten. Omdat collecties geen vaste structuur van documenten vereisen kunnen met andere woorden verschillende document types in een collectie zitten. Bijvoorbeeld klant info en server log data kunnen in dezelfde collectie terecht komen. Dit is niet aan te raden!
-Algemeen beschouwen we dat collecties documenten bewaren over hetzelfde “onderwerp”.
-Vermijden van abstracte entiteitstypes! Bijvoorbeeld je wil logging data bewaren over de clicks op je webpagina, alsook algemene server logs. Deze 2 entiteiten hebben een id en timestamp gemeen. Ga deze dan niet als 1 collectie modelleren omwille van het weinige gemeenschappelijke, want als je uiteindelijk de weblog en server log er apart wil uithalen, zul je een extra attribuut “type” moeten bewaren om de data eruit te filteren. En filteren is dikwijls trager dan het werken met meerdere collecties.
+Algemeen beschouwen we dat collecties documenten bewaren over hetzelfde â€œonderwerpâ€.
+Vermijden van abstracte entiteitstypes! Bijvoorbeeld je wil logging data bewaren over de clicks op je webpagina, alsook algemene server logs. Deze 2 entiteiten hebben een id en timestamp gemeen. Ga deze dan niet als 1 collectie modelleren omwille van het weinige gemeenschappelijke, want als je uiteindelijk de weblog en server log er apart wil uithalen, zul je een extra attribuut â€œtypeâ€ moeten bewaren om de data eruit te filteren. En filteren is dikwijls trager dan het werken met meerdere collecties.
 Let wel, bovenstaande zijn tips!
 
-Een voobeeld: we willen bijhouden welke producten klanten hebben besteld. We gaan 1 document aanmaken dat boeken, cd’s en kleine keukenapparaten kan bevaten. Voorlopig zijn er dus 3 type producten, maar op termijn kan dit uitbreiden.
+Een voobeeld: we willen bijhouden welke producten klanten hebben besteld. We gaan 1 document aanmaken dat boeken, cdâ€™s en kleine keukenapparaten kan bevaten. Voorlopig zijn er dus 3 type producten, maar op termijn kan dit uitbreiden.
 Alle producten hebben:
 -	Produkt naam
 -	Beschrijving
@@ -167,8 +171,8 @@ Boek:
 -	Auteurs naam
 -	Publisher
 -	Jaar publicatie
--	Aantal pagina’s
-CD’s:
+-	Aantal paginaâ€™s
+CDâ€™s:
 -	Artiest naam
 -	Producer naam
 -	Aantal tracks
@@ -182,7 +186,7 @@ Hoe beslissen dat we onze data in 1 of meerdere collecties gaan opslaan? Je vraa
 -	Top 20 van de populairste producten
 -	Gemiddel de prijs verkochte goederen
 -	Hoeveel producten per type zijn de laatste 30 dagen gekocht?
-Alle queries gebruiken data van alle product types, behalve de laatste. Dit kan al een indicatie zijn om één collectie te gebruiken.
+Alle queries gebruiken data van alle product types, behalve de laatste. Dit kan al een indicatie zijn om Ã©Ã©n collectie te gebruiken.
 Een andere indicatie tot gebruik van 1 enkele collectie is  de mogelijkheid dat de klant zal groeien en andere product types introduceert.
 
 
@@ -193,7 +197,7 @@ De basis operaties zijn net zoals bij relationele databases:
 -	Delete
 -	Update
 -	Select
-Wij gaan MongoDB gebruikt als document database (is voorlopig de meest gebruikte). De taal voor de manupulatie is die voor MongoDB – er is geen uniforme taal.
+Wij gaan MongoDB gebruikt als document database (is voorlopig de meest gebruikte). De taal voor de manupulatie is die voor MongoDB â€“ er is geen uniforme taal.
 
 ## Toevoegen van documenten in een collectie
 
@@ -230,7 +234,7 @@ db.employees.find({"naam":"peeters"})
 
 Deze 2 find methodes geven alle keys en values terug in de documenten.
 
-Je kan ook een extra parameter meegeven om te specifiëren welke keys je wil laten zien, samen met een 1 om aan te duiden dat deze moet getoond worden.
+Je kan ook een extra parameter meegeven om te specifiÃ«ren welke keys je wil laten zien, samen met een 1 om aan te duiden dat deze moet getoond worden.
 
 db.employees.find({"naam":"peeters"}, {"voornaam":1});
 
@@ -258,10 +262,10 @@ De logica dat je kan gebruiken:
 
 ## MongoDB commando's
 
-Om een database aan te maken gebruik je het use commando, bijvoorbeeld “use news”
+Om een database aan te maken gebruik je het use commando, bijvoorbeeld â€œuse newsâ€
 Om te kijken welke databanken beschikbaar zijn : show dbs
 De goede lezer merkt dat onze news database niet beschikbaar is, dit komt omdat deze nog geen collecties bevat.
-Om een collectie aan te maken: db.createCollection(“EenCollection”)
+Om een collectie aan te maken: db.createCollection(â€œEenCollectionâ€)
 
 
 
@@ -337,7 +341,7 @@ Schemaless betekent :
 
 ### Meer flexibiliteit
 
-Ontwikkelaars kunnen op elk moment nieuwe key-value paren toevoegen, zelfs na de collectie is aangemaakt. Eens de collectie aangemaakt kan je er variërende documenten naar toe sturen.
+Ontwikkelaars kunnen op elk moment nieuwe key-value paren toevoegen, zelfs na de collectie is aangemaakt. Eens de collectie aangemaakt kan je er variÃ«rende documenten naar toe sturen.
 
 ### Meer verantwoordelijkheid
 
@@ -374,7 +378,7 @@ de relatie ten opzichte van elkaar allemaal nodig zijn.
 
 Nadat je bij je relationeel model de entiteiten hebt bepaald, ga je aan normalizatie (en eventueel denormalizatie) doen.
 
-Normalizeren is het organizeren van je data in tabellen om potentiële data anomalieën tegen te gaan (inconsistente data). Bij normalizatie vermindert de redundante (overtollige) data
+Normalizeren is het organizeren van je data in tabellen om potentiÃ«le data anomalieÃ«n tegen te gaan (inconsistente data). Bij normalizatie vermindert de redundante (overtollige) data
 in de database. Om te normalizeren gebruiken we enkele "normalizatie" regels (1e, 2e, 3e,..).
 
 Wanneer we bij document databases meerdere collecties gebruiken zeggen we dat deze genormaliseerd is. Genormaliseerde documenten betekent dat we een referentie leggen naar andere documenten.
@@ -406,19 +410,19 @@ Server Data: {
 
 }
 
-Normalizatie help dus  om data anomalieën te vermijden, maar kan performantie problemen veroorzaken! Als je data in meerdere tabellen moet opzoeken (joining). Met andere woorden het design 
+Normalizatie help dus  om data anomalieÃ«n te vermijden, maar kan performantie problemen veroorzaken! Als je data in meerdere tabellen moet opzoeken (joining). Met andere woorden het design 
 van een database in altijd een trade-off tussen een hoge genormaliseerde database zonder redundante data en een gedenormaliseerde database. Dus denormalizatie doet een undo van de normalizatie regels.
 
 ## Waarom aan denormalizatie doen?
 
-Denormalizatie veroorzaakt data anomalieën, heeft meer geheugenruimte nodig (dubbele data bewaren), maar betekent een veel betere performantie.
+Denormalizatie veroorzaakt data anomalieÃ«n, heeft meer geheugenruimte nodig (dubbele data bewaren), maar betekent een veel betere performantie.
 
 # Document Database Design
 
-Document database designers bewaren gerelateerde data in hetzelfde document. (Er zal dikwijls een trade-off gemaakt moeten worden tussen performantie en anomalieën.) Document database designers
-trachten steeds data anomalieën te vermijden, maar zijn bereid om verantwoordelijkheid te tonen ten opzichte van scalability en flexibility.
+Document database designers bewaren gerelateerde data in hetzelfde document. (Er zal dikwijls een trade-off gemaakt moeten worden tussen performantie en anomalieÃ«n.) Document database designers
+trachten steeds data anomalieÃ«n te vermijden, maar zijn bereid om verantwoordelijkheid te tonen ten opzichte van scalability en flexibility.
 Bijvoorbeeld: indien er redundante kopies van klantadressen in de database worden bewaard, kan de programmeur een update methode maken die alle kopies van adressen update. Op die manier kunnen
-anomalieën vermeden worden, maar betekenen dus een grotere verantwoordelijkheid voor development.
+anomalieÃ«n vermeden worden, maar betekenen dus een grotere verantwoordelijkheid voor development.
 
 ## Modelleer 1-N relatie
 
@@ -441,10 +445,10 @@ Dit kan bijvoorbeeld de adressen van een persoon zijn. Een juiste use case om di
 }
 
 De voordelen hiervan is dat je geen aparte query moet maken om de details (adresssen) te kennen. Het nadeel is dat je de adressen niet als standalone kan raadplegen.
-Dit nadeel speelt parten bij bijvoorbeeld: elke persoon heeft een aantal taken toegewezen gekregen. Embedding de taken binnen een persoon, zal de query ‘toon alle taken voor morgen’ veel moeilijker maken
+Dit nadeel speelt parten bij bijvoorbeeld: elke persoon heeft een aantal taken toegewezen gekregen. Embedding de taken binnen een persoon, zal de query â€˜toon alle taken voor morgenâ€™ veel moeilijker maken
 
 ### Een op veel relatie
-Bijvoorbeeld : elk product bestaat uit onderdelen (niet meer dan enkele duizenden). Dit is een juiste use case voor “referencing”. De Object Ids van de onderdelen stop je in een array bij het product document.
+Bijvoorbeeld : elk product bestaat uit onderdelen (niet meer dan enkele duizenden). Dit is een juiste use case voor â€œreferencingâ€. De Object Ids van de onderdelen stop je in een array bij het product document.
  En dus heeft elk onderdeel zijn apart document:
 
 > db.parts.findOne()
