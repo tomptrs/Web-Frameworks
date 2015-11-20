@@ -148,3 +148,39 @@ app.get("/api/users",function(req,res){
 });
 
 ```
+
+
+## Find One
+
+De NodeJS server
+```html
+app.get('/api/users/:naam', function(req, res) {
+
+   
+    console.log(req.params.naam);
+   
+    User.find({voornaam: req.params.naam}, function(err, users) {
+        if (err) throw err;
+        // object of all the users
+        console.log(users);
+        res.json(users);
+    });
+});
+
+```
+
+Aanroepen in de Angular code:
+
+```html
+
+ $scope.findOneUser = function(){
+               
+                 $http.get("http://localhost:3000/api/users/" + $scope.naam)
+                     .success(function(posts){
+                        alert(posts[0].voornaam);
+                        console.log(posts);
+                    });
+            
+            };
+            
+            ```
