@@ -128,3 +128,23 @@ userSchema.pre("save", function (next) {
 });
 
 ```
+
+
+## Find data
+
+```html
+
+app.get("/api/users",function(req,res){
+
+   
+    // get all the users
+    User.find({}, function(err, users) {
+        if (err) throw err;
+
+        // object of all the users
+        console.log(users);
+        res.json(users);
+    });
+});
+
+```
