@@ -374,6 +374,15 @@ app.controller("twitterController",function($scope,$http){
 
 ## Problemen oplossen met cross-domain scripting
 
+Indien services op een ander domein worden gehost (dus niet je eigen Web Server) legt men security beperkingen op = cross-domain scripting.
+
+Waarom?:
+Beschermen tegen verschillende beveiligings kwetsbaarheden
+Men laat enkel “site-of-origin communication” toe 
+Bijvoorbeeld, een applicatie gehost op http://contoso.com/mycontrol.aspx heeft toegang tot services op hetzelfde domein – bijvoorbeeld http://contoso.com/service.svc, maar niet tot http://fabrikam.com/service.svc.
+
+![postman](crossDomain.PNG)
+
 In je Express Server schrijf je volgende code:
 
 ```html
