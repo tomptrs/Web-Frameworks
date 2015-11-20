@@ -5,7 +5,7 @@ Dankzij Node.js en MongoDB en de mogelijkheid om JSON te versturen wordt deze
 constructie (MEAN Stack) veel gebruikt in web development.
 * MEAN Stack: MongoDB, Express, Node en AngularJS.
 
-In vele applicaties is er nood aan CRUD: informatie creëeren (create), lezen (read)
+In vele applicaties is er nood aan CRUD: informatie creÃ«eren (create), lezen (read)
 update en delete.
 
 Om dergelijke crud applicaties te bouwen maken we gebruik van de mongoose Node
@@ -24,9 +24,12 @@ npm install mongoose --save
 
 ## Mongoose gebruiken
 
+```html
+
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/mydb");
 
+```
 ## Modellen maken
 
 Vooraleer je crud operaties kan uitvoeren moeten er eerst mongoose modellen
@@ -35,6 +38,7 @@ kunnen worden.
 
 Hiervoor stel je een mongoose schema op:
 
+```html
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
@@ -60,9 +64,10 @@ var User = mongoose.model('User', userSchema);
 
 module.exports = User;
 
+```
 
 Op deze manier wordt een schema gedefinieerd. Maak een mongoose variabele en 
-mongoose schema aan, om vervolgens de attributen te definiëren op je userSchema.
+mongoose schema aan, om vervolgens de attributen te definiÃ«ren op je userSchema.
 
 De types die je kan gebruiken zijn de volgende:
 - String
@@ -79,6 +84,8 @@ Tenslotte maak je het model aan door mongoose.model.
 ## Gebruik maken van je model
 
 ### Save User
+
+```html
 
 var User = require('./Models/UserModel');
 
@@ -103,7 +110,7 @@ tom.save(function (err) {
 console.log("user saved");
 
 });
-
+```
 
 ### Actie voor de save functie
 
@@ -111,6 +118,7 @@ We hebben ook een created_at attribuut gedefinieerd om te weten wanneer de recor
 hiervoor bijvoorbeeld de pre methode van het schema gebruiken om operaties af te handelen vooraleer het object bewaard 
 wordt.
 
+```html
 userSchema.pre("save", function (next) {
 
 	var currentDate = new Date();
@@ -119,4 +127,4 @@ userSchema.pre("save", function (next) {
 	next();
 });
 
-
+```
