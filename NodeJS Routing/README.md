@@ -5,7 +5,7 @@ Routing is het vastleggen van eindpunten (URI's) en de verwerking van client
 requests.
 
 Een route is een combinatie van een URI, HTTP request method (GET, POST, ...) en 
-één of meerdere handlers voor dit eindpunt.
+Ã©Ã©n of meerdere handlers voor dit eindpunt.
 
 ## Structuur
 
@@ -16,6 +16,8 @@ een pad op de server en callback is een functie die wordt uitgevoerd wanneer
 de route overeenkomt.
 
 Bijvoorbeeld:
+
+```html
 
 var express = require('express');
 var app = express();
@@ -30,22 +32,28 @@ app.listen(3000, function () {
 	console.log("Listening at 3000");
 });
 
-Een route methode is afgeleid van één van de HTTP methodes en opgeroepen op
+```
+
+Een route methode is afgeleid van Ã©Ã©n van de HTTP methodes en opgeroepen op
 een instantie van express
 
 Bijvoorbeeld een POST methode:
+
+```html
 
 // POST method route
 app.post('/', function (req, res) {
 	res.send('POST request to the homepage');
 });
-
+```
 
 ## Route paths
 
 Een route path, in combinatie met een request methode definieert de eindpunten van de requests. Deze kunnen bijvoorbeeld strings zijn.
 
 Bijvoorbeeld:
+
+```html
 
 // will match request to the root
 app.get('/', function (req, res) {
@@ -62,9 +70,11 @@ app.get('/random', function (req, res) {
   res.send('random');
 });
 
+```
 
 Een route kan meer callback functies afhandelen:
 
+```html
 
 app.get('/example/b', function (req, res, next) {
   console.log('response will be sent by the next function ...');
@@ -73,8 +83,10 @@ app.get('/example/b', function (req, res, next) {
   res.send('Hello from B!');
 });
 
-
+```
 Een route kan een array van callback functies afhandelen:
+
+```html
 
 var cb0 = function (req, res, next) {
   console.log('CB0');
@@ -91,7 +103,7 @@ var cb2 = function (req, res) {
 }
 
 app.get('/example/c', [cb0, cb1, cb2]);
-
+```
 
 
 ## Response methods
@@ -116,6 +128,8 @@ res.sendStatus()	Set the response status code and send its string representation
 Door app.route() kunnen we een ketting van handlers vormen. De path blijft
 hetzelfde maar de method is anders:
 
+```html
+
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -127,6 +141,7 @@ app.route('/book')
     res.send('Update the book');
   });
 
+```
 Via de chrome extensie postman kunnen we de post testen
 
 
@@ -138,6 +153,8 @@ Onderstaand voorbeeld maakt een router aan en definieert enkele routes en
 voegt dit toe aan de main app:
 
 Maak een nieuw javascript bestand gebruikers.js aan met onderstaande code:
+
+```html
 
 var express = require('express');
 var router = express.Router();
@@ -162,13 +179,17 @@ router.post('/post', function (req, res) {
 
 module.exports = router;
 
+```
 In je main node bestand:
+
+
+```html
 
 var gebruikers = require('./gebruikers.js');
 
 app.use('/gebruikers', gebruikers);
 
-
+```
 
 
 
