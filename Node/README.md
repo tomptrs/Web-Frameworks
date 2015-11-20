@@ -371,3 +371,17 @@ app.controller("twitterController",function($scope,$http){
 
 
 ```
+
+## Problemen oplossen met cross-domain scripting
+
+In je Express Server schrijf je volgende code:
+
+```html
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+```
