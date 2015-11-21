@@ -184,3 +184,43 @@ Aanroepen in de Angular code:
             };
             
             ```
+
+## Remove user
+
+Server code:
+
+```html
+
+app.delete('/api/users/:voornaam', function(req, res) {
+        User.remove({
+            voornaam : req.params.voornaam
+        }, function(err, todo) {
+            if (err)
+                res.send(err);
+            // get and return all the todos after you create another
+            User.find(function(err, users) {
+                if (err)
+                    res.send(err)
+                res.json(users);
+            });
+        });
+    });
+
+```
+
+Angular code:
+
+```html
+
+ $scope.removeUser = function(){
+                
+                $http.delete("http://localhost:3000/api/users/"+ $scope.voornaam)
+                    .success(function(post){
+                        console.log("remove success");  
+                        $scope.posts = post;
+                    
+                    });
+                
+            };
+            
+```
