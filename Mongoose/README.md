@@ -128,3 +128,99 @@ userSchema.pre("save", function (next) {
 });
 
 ```
+
+
+## Find data
+
+```html
+
+app.get("/api/users",function(req,res){
+
+   
+    // get all the users
+    User.find({}, function(err, users) {
+        if (err) throw err;
+
+        // object of all the users
+        console.log(users);
+        res.json(users);
+    });
+});
+
+```
+
+
+## Find One
+
+De NodeJS server
+```html
+app.get('/api/users/:naam', function(req, res) {
+
+   
+    console.log(req.params.naam);
+   
+    User.find({voornaam: req.params.naam}, function(err, users) {
+        if (err) throw err;
+        // object of all the users
+        console.log(users);
+        res.json(users);
+    });
+});
+
+```
+
+Aanroepen in de Angular code:
+
+```html
+
+ $scope.findOneUser = function(){
+               
+                 $http.get("http://localhost:3000/api/users/" + $scope.naam)
+                     .success(function(posts){
+                        alert(posts[0].voornaam);
+                        console.log(posts);
+                    });
+            
+            };
+            
+```           
+
+## Remove user
+
+Server code:
+
+```html
+
+app.delete('/api/users/:voornaam', function(req, res) {
+        User.remove({
+            voornaam : req.params.voornaam
+        }, function(err, todo) {
+            if (err)
+                res.send(err);
+            // get and return all the todos after you create another
+            User.find(function(err, users) {
+                if (err)
+                    res.send(err)
+                res.json(users);
+            });
+        });
+    });
+
+```
+
+Angular code:
+
+```html
+
+ $scope.removeUser = function(){
+                
+                $http.delete("http://localhost:3000/api/users/"+ $scope.voornaam)
+                    .success(function(post){
+                        console.log("remove success");  
+                        $scope.posts = post;
+                    
+                    });
+                
+            };
+            
+```
