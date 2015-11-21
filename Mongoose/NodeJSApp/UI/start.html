@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    
+    <script>
+    
+        var app = angular.module("myapp",[]);
+        
+        app.controller("myctrl",function($scope,$http){
+            
+            //GET Data from NODE Server
+            $http.get("http://localhost:3000/api/users")
+                .success(function(posts){
+                    $scope.posts = posts;
+                console.log($scope.posts);
+            });
+            
+            $scope.findOneUser = function(){
+               
+                 $http.get("http://localhost:3000/api/users/" + $scope.naam)
+                     .success(function(posts){
+                        alert(posts[0].voornaam);
+                        console.log(posts);
+                    });
+            
+            };
+            
+            $scope.addPost =  function()
+            {               
+                    $http.post("http://localhost:3000/api/users",{
+                        "naam":$scope.naam,
+                        "voornaam":$scope.voornaam
+                        }).success(function(post){
+                            console.log(post.naam);
+                          
+                            $scope.posts.unshift(
+			                 {
+				                voornaam: post.voornaam,
+				                 naam: post.naam
+			                 }
+		                      );
+                         console.log($scope.posts);
+                    });
+
+                };
+            
+            $scope.removeUser = function(){
+                
+                $http.delete("http://localhost:3000/api/users/"+ $scope.voornaam)
+                    .success(function(post){
+                        console.log("remove success");  
+                        $scope.posts = post;
+                    
+                    });
+                
+            };
+
+        });
+    </script>
+</head>
+<body ng-app="myapp">
+    
+    <div ng-controller="myctrl">
+       <ul ng-repeat="x in posts">
+        <li>{{x.naam}}</li>
+        </ul>
+        
+        naam:<input type="text" ng-model="naam">
+        voornaam:<input type="text" ng-model="voornaam">
+        <button ng-click="addPost()">Add Post</button>
+        
+        <button ng-click="findOneUser()">Find One User</button>
+         <button ng-click="removeUser()">Remove One User</button>
+    </div>
+
+
+
+</body>
+</html>
