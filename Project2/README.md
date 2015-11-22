@@ -23,7 +23,7 @@ Een oefening heeft:
 
 ## Model
 
-Uit de requirements halen we ons model maken:
+Uit de requirements halen we ons model:
 ```html
 function Oefening(args) {
     this.naam = args.naam;
