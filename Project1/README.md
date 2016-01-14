@@ -100,9 +100,9 @@ de variabele in de controller zou veranderen zal de UI automatisch updaten.
 * ng-controller: linkt de controller aan de view.
 
 We kunnen nog wat extra's doen met bindings en gebruik maken van expressies. De ng-show directive wordt geevalueerd naar
-true of fase en dus gebruiken we hier expressies: afwijking > 0
+true of false en dus gebruiken we hier expressies: afwijking > 0
 
-Gebruik de chrome extense batarang voor AngularJS debugging functionaliteit.
+Gebruik de chrome extensie batarang voor AngularJS debugging functionaliteit.
 Als deze niet werkt, kan je ook Angular JS Batarang (Stable) gebruiken: https://chrome.google.com/webstore/detail/angularjs-batarang-stable/niopocochgahfkiccpjmmpchncjoapek/related
 
 ![batarang](batarang.PNG)
@@ -110,7 +110,7 @@ Als deze niet werkt, kan je ook Angular JS Batarang (Stable) gebruiken: https://
 
 ##scope
 
-In Angular elke javascript object of primitive kan een model zijn. Om een binding te hebben moeten deze parameters aan 
+In Angular kan elk javascript object of primitive  een model zijn. Om een binding te hebben moeten deze parameters aan 
 een scope object toegewezen worden.
 
 ###Definitie
