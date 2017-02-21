@@ -1,5 +1,5 @@
 
-# Testing AngularJS Part 1 - Karma, Jasmine, and ngMock
+# Testing AngularJS - Karma, Jasmine, and ngMock
 
 
 ## Introduction
