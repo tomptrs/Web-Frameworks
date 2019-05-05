@@ -12,7 +12,7 @@ https://material.angular.io/
 
 Make  a different file called material.module.ts. Here you keep all the material Module dependencies.
 
-´´´
+```
 import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -29,13 +29,13 @@ exports: [MatButtonModule, MatCheckboxModule,MatToolbarModule,MatInputModule,Mat
 })
 
 export class MaterialModule{}
-´´´
+```
 
 
 
 Now add the material.module.ts file in app.module.ts :
 
-´´´
+```
 import { MaterialModule } from "./material/material.module";
 
 @NgModule({
@@ -71,20 +71,20 @@ bootstrap: [AppComponent]
 
 export class AppModule { }
 
-´´´
+```
 
 ## Using Angular Material components example:
 
 https://material.angular.io/
 
-´´´
+```
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Favorite food" value="Sushi">
   </mat-form-field>
-  ´´´
 
   <mat-form-field class="example-full-width">
     <textarea matInput placeholder="Leave a comment"></textarea>
   </mat-form-field>
 </form>
+ ```
