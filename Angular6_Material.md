@@ -63,7 +63,7 @@ HttpClientInMemoryWebApiModule.forRoot(TestData)
 
 ],
 
-providers: [DataService],
+providers: [],
 
 bootstrap: [AppComponent]
 
