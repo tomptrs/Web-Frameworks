@@ -57,9 +57,9 @@ ReactiveFormsModule,
 
 BrowserAnimationsModule,
 
-MaterialModule,
+MaterialModule
 
-HttpClientInMemoryWebApiModule.forRoot(TestData)  
+  
 
 ],
 
