@@ -25,9 +25,7 @@ imports: [
 
 BrowserModule,
 
-AppRoutingModule,
-
-HttpClientInMemoryWebApiModule.forRoot(TestData)  
+AppRoutingModule
 
 ],
 
