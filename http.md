@@ -8,7 +8,7 @@ Angular provides an HTTP service that allows us to communicate with a back-end w
 
 Before you can use the HttpClient, you need to import the Angular HttpClientModule. Most apps do so in the root AppModule.
 
-´´´
+```
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,13 +31,15 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppModule { }
 
-´´´
+
+```
 
 
 In your service, you use dependency injection for the http service:
 
 
-´´´
+
+```
 import { Injectable } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -49,12 +51,12 @@ export class MyService {
   constructor(private http:HttpClientModule) { }   
 }
 
-´´´
+
+```
 
 ## Implementation of the service
 
-
-´´´
+```
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -74,14 +76,14 @@ export class MyService {
   }   
 }
 
-´´´
+
+```
 
 Because the service method returns an Observable of any data, the component subscribes to the method's return value. The subscription callback copies the data fields into the component's variable, which can be databound in the component template for display.
 
 How to retrieve the data in the component:
 
-
-´´´
+```
  GetQuoteOfTheDay(){
     this.myservice.GetQuoteOfTheDay().subscribe({
       next:(result)=>{
@@ -91,14 +93,16 @@ How to retrieve the data in the component:
     })
   }
   
-´´´
+
+```
 
 ## Type-checking the response
 
 Instead of requesting data from the service as an any type, you can get typed information. If you browse e.g. to http://quotes.rest/qod.json , you get the quote of the day as JSON data:
 
 
-´´´
+
+```
 {
     "success": {
         "total": 1
@@ -126,12 +130,14 @@ Instead of requesting data from the service as an any type, you can get typed in
     }
 }
 
-´´´
+
+```
 
 Go to http://json2ts.com/ and paste the json data string into the text field. The site generates typescript interfaces/classes for you.
 
 
-´´´
+
+```
     export interface Success {
         total: number;
     }
@@ -159,12 +165,14 @@ Go to http://json2ts.com/ and paste the json data string into the text field. Th
         contents: Contents;
     }
 
-´´´
+
+```
 
 Now you can add the interfaces/classes in your angular project and import the classes where needed. E.g. 
 
 
-´´´
+
+```
 My service looks like:
 
 import { Injectable } from '@angular/core';
@@ -191,10 +199,12 @@ export class MyService {
    
 }
 
-´´´
+
+```
 And in my component I created following method:
 
-´´´
+
+```
   GetQuoteOfTheDayTyped(){
 
     this.myservice.GetQuoteOfTheDayTyped().subscribe({
@@ -209,7 +219,8 @@ And in my component I created following method:
   }
 
 
-´´´
+
+```
 
 
 
