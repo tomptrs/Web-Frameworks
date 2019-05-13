@@ -10,7 +10,7 @@ Reactive extensions represent a data sequence as an observable sequence, commonl
 
 Use the Observables constructor to create an observable stream of any type. The constructor takes as its argument the subscriber function to run when the observable’s subscribe()  method executes. The subscriber function receives an Observer object and can publish the values to the observer’s next() method.
 
-´´´
+```
 let one = new Observable(observer => {
 
     
@@ -18,37 +18,31 @@ let one = new Observable(observer => {
       observer.complete();
     });
 
-
-´´´
+```
 
 Use the Observable constructor to create an observable stream of any type. The constructor takes as its argument the subscriber function to run when the observable’s subscribe() method executes. A subscriber function receives an Observer object, and can publish values to the observer's next() method.
 
 So, here we have done is first import the Observable from rxjs. Then defined one function that will return an observable. The observable object gets one argument that has a timeout function. So after 1 second, it will produce the whole student’s array if the subscriber subscribes the observable.
 
 In simple terms, here studentObservable are publishing our primary data array that is students. So if any entity needs to get the values out of observable, then it first needs to subscribe that observable and then studentObservable starts to publish the values, and then subscriber get the values.
-
-´´´
+```
  one.subscribe((result)=>{
       console.log(result);
     });
 
-
-´´´
+```
 The subscribe() method can accept callback function definitions in line, for next, error, and complete handlers. For example, the following subscribe() call is the same as the one that specifies the predefined observer:
-
-´´´
+```
 myObservable.subscribe(
   x => console.log('Observer got a next value: ' + x),
   err => console.error('Observer got an error: ' + err),
   () => console.log('Observer got a complete notification')
 );
-
-´´´
+```
 
 Or you alternatively can work with an observer object
 
-
-´´´
+```
 const myObserver = {
   next: x => console.log('Observer got a next value: ' + x),
   error: err => console.error('Observer got an error: ' + err),
@@ -58,12 +52,12 @@ const myObserver = {
 // Execute with the observer object
 myObservable.subscribe(myObserver);
 
+```
 
-´´´
 ## An example:
 
 
-´´´
+```
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -120,6 +114,5 @@ export class ServiceComponent implements OnInit {
 }
 
 
-´´´
-
+```
 
