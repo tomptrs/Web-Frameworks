@@ -215,10 +215,13 @@ Await
 
 It works only inside async functions!
 
+```
 let value = await promise;
+```
 
-The keyword await makes JavaScript wait until that promise settles and returns its result.
+The` keyword await makes JavaScript wait until that promise settles and returns its result.
 
+```
 async function f() {
 
   let promise = new Promise((resolve, reject) => {
@@ -231,6 +234,7 @@ async function f() {
 }
 
 f();
+```
 
 The function execution “pauses” at the line (*) and resumes when the promise settles, with result becoming its result. So the code above shows “done!” in one second.
 
