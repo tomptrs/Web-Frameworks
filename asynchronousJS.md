@@ -373,3 +373,29 @@ export class AppComponent {
 
 I need to create a new method f(), with the async keyword, otherwise I cannot use the await keyword. Now my code calls a function asynchronously, but it looks like calling a function in a synchron way!
 
+Especially when you compare it with calling the promise.then() method:
+
+```
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'asyncApp';
+
+  constructor(private service:DataService){
+
+    let promise = service.GetDataWithPromise(10);
+    promise.then((result)=>{
+      console.log(result);
+    });   
+   
+  }
+
+
+```
+
