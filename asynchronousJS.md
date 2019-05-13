@@ -307,3 +307,69 @@ levelThree(value) {
 
 }
 ```
+
+
+Another example of the async/functionality
+
+I create a service e.g.:
+
+```
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+
+  constructor() { }
+
+
+  GetDataWithPromise(getal){
+
+    let p = new Promise( (resolve,reject)=>{
+
+      setTimeout(()=>{
+        getal*=10;
+        resolve(getal);
+        }, 5000)
+      });
+
+    return p;
+
+  }
+}
+```
+
+The GetDataWithPromise returns a promise, and after 5 seconds it is resolved!
+
+In the component I can use the async await functions. This means my code is much more readable!
+
+```
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'asyncApp';
+
+  constructor(private service:DataService){
+
+     this.f();
+   
+  }
+
+  async f() {
+    let p = await this.service.GetDataWithPromise(100);  
+    console.log(p);
+  }
+
+}
+
+```
+
+I need to create a new method f(), with the async keyword, otherwise I cannot use the await keyword. Now my code calls a function asynchronously, but it looks like calling a function in a synchron way!
+
