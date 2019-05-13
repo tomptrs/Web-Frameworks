@@ -76,6 +76,19 @@ export class AppModule { }
 
 ```
 
+> Since Angular6, you don't have to register the service in the App.Module.ts anymore, because the service is decorated with:
+
+```
+@Injectable({
+  providedIn: 'root'
+})
+```
+
+So, from now on , you just can use the service in your components!
+
+
+
+
 ## Dependency injection (DI)
 
 Dependency Injection is wired into the Angular framework and used everywhere to provide new components with the services or other things they need. Components consume services; that is, you can inject a service into a component, giving the component access to that service class.
