@@ -89,12 +89,14 @@ Consider the following template in app.component.html
 <li><a routerLink="teller">teller</a></li>
 
 <router-outlet></router-outlet>
+```
 
 The RouterLink directives on the anchor tags give the router control over those elements. The navigation paths are fixed, so you can assign a string to the routerLink (a "one-time" binding).
 
 ### Define a Wildcard route
+```
 {path:"**",component:PagenotfoundComponent}
-
+```
 A wildcard route has a path consisting of two asterisks. It matches every URL. The router will select this route if it can't match a route earlier in the configuration. A wildcard route can navigate to a custom "404 Not Found" component or redirect to an existing route.
 
 ## Activated Route in action
