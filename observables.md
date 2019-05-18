@@ -116,3 +116,89 @@ export class ServiceComponent implements OnInit {
 
 ```
 
+## Difference Promise and Observable
+
+https://medium.com/@mpodlasin/promises-vs-observables-4c123c51fe13
+
+
+E.G.:
+
+#### The dataservice:
+
+
+```
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+
+  constructor() { 
+
+  }
+
+  DoPromise(){
+
+    let numberPromise = new Promise((resolve) => {
+      
+      setInterval( ()=>{
+        let g = Math.floor(Math.random()*10);
+        resolve(g);
+      },2000)
+ 
+    });
+
+    return numberPromise;
+
+  }
+
+
+  DoObservable(){
+
+    let obs = new Observable((observer) => {
+      
+      setInterval( ()=>{
+        let g = Math.floor(Math.random()*10);
+        observer.next(g);
+      },2000)
+ 
+    });
+
+    return obs;
+
+  }
+
+}
+
+
+```
+
+### The component
+
+```
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+
+  constructor(private service: DataService){
+
+    this.service.DoPromise().then((data)=>{
+      console.log(data);
+    })
+
+
+    this.service.DoObservable().subscribe((data)=>{
+      console.log(data);
+    })
+  } 
+}
+
+```
